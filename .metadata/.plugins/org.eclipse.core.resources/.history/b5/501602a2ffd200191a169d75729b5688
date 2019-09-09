@@ -1,0 +1,26 @@
+package org.vaadin.spring.tutorial;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.login.LoginOverlay;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+
+@Tag("sa-login-view")
+@Route(value = LoginView.ROUTE)
+@PageTitle("Login")
+public class LoginView extends Component {
+	public static final String ROUTE = "login";
+
+	public interface Model extends TemplateModel {
+		void setError(boolean error);
+	}
+}

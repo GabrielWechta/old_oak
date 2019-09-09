@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.stream.Stream"/>
+<fullyQualifiedTypeName name="com.vaadin.flow.component.Component"/>
+<fullyQualifiedTypeName name="com.vaadin.flow.component.Tag"/>
+<fullyQualifiedTypeName name="org.springframework.security.web.savedrequest.SavedRequest"/>
+<fullyQualifiedTypeName name="org.springframework.security.core.AuthenticationException"/>
+<fullyQualifiedTypeName name="org.springframework.security.core.Authentication"/>
+</qualifiedTypeNameHistroy>

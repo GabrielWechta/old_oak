@@ -33,7 +33,7 @@ import com.vaadin.flow.router.RouterLink;
 @Route
 public class MainView extends VerticalLayout implements LocaleChangeObserver {
 
-    private RouterLink link, link_2, link_3;
+    private RouterLink link, link_2;
 
     public MainView(@Autowired Greeter greeter) {//, @Autowired ExampleTemplate template) {
     	
@@ -47,13 +47,13 @@ public class MainView extends VerticalLayout implements LocaleChangeObserver {
 
         link = new RouterLink("to view",ViewComponent.class);
         link_2 = new RouterLink("to nice feeling", NiceFeelingComponent.class);
-        link_3 = new RouterLink("to loging in", LoginComponent.class);
+        //link_3 = new RouterLink("to loging in", LoginComponent.class);
         
         Style linkStyle = link.getElement().getStyle();
         linkStyle.set("display", "block");
         linkStyle.set("margin-bottom", "10px");
 
-        add(secondheading, greeting, link, link_2, link_3);// template); 
+        add(secondheading, greeting, link, link_2);// template); 
     }
 
     @Override
