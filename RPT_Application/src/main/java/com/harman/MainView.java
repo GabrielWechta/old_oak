@@ -32,7 +32,7 @@ public class MainView extends VerticalLayout implements LocaleChangeObserver {
 
         link = new RouterLink("to view",ViewComponent.class);
         link_2 = new RouterLink("to nice feeling", NiceFeelingComponent.class);
-        //link_3 = new RouterLink("to loging in", LoginComponent.class);
+       // link_3 = new RouterLink("h2-console", );
         
         Style linkStyle = link.getElement().getStyle();
         linkStyle.set("display", "block");

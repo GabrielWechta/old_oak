@@ -1,0 +1,23 @@
+package com.harman;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+
+public class HIBERNATECLASS implements CommandLineRunner{
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	UserRepository repository;
+	
+    @Override
+    public void run(String... args) throws Exception
+    {      
+        Optional<UserEntity> emp = repository.findById(2L);
+ 
+       System.out.println("Employee id 2 -> {}" + emp.get());
+    }
+    
+}

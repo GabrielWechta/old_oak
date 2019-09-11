@@ -1,0 +1,27 @@
+package com.harman;
+
+import javax.persistence.Column;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
+
+import org.hibernate.annotations.Table;
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name="TBL_USERS")
+public class UserEntity {
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    @Column(name = "first_name")
+    private String firstName;
+    
+    @Column(name = "last_name")
+    private String lastName;
+    
+    @Column(name="email", nullable=false, length=200)
+    private String email;
+ 
+}

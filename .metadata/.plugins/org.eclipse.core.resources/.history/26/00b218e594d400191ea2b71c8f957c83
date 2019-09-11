@@ -1,0 +1,28 @@
+vaadin.compatibilityMode=false
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+
+# Enabling H2 Console
+spring.h2.console.enabled = true
+
+#spring.datasource.url=jdbc:h2:mem:test
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.datasource.username=sa
+#spring.datasource.password=
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+
+#spring.datasource.jdbc-url = jdbc:mysql:mem:test
+#spring.datasource.name=testme
+#spring.datasource.username=sa
+#spring.datasource.password=
+#spring.datasource.driver-class-name= com.mysql.jdbc.Driver spring.jpa.database=mysql
+#spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+
+app.datasource.jdbc-url=jdbc:mysql://localhost/test
+app.datasource.username=dbuser
+app.datasource.password=dbpass
+app.datasource.maximum-pool-size=30
+
+#spring.jpa.generate-ddl=true
+
+#spring.jpa.hibernate.ddl-auto=create
