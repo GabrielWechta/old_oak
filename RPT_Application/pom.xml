@@ -16,6 +16,7 @@
 
     <properties>
         <vaadin.version>14.0.0.rc7</vaadin.version>
+        <start-class>com.harman.TutorialApplication</start-class>
     </properties>
 
     <pluginRepositories>

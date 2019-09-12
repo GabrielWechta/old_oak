@@ -8,6 +8,12 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="+++"/>
+			<item value="++++"/>
+			<item value="rest"/>
+			<item value="+++++++"/>
+			<item value="all us"/>
+			<item value="student"/>
 			<item value="isfr"/>
 			<item value="is"/>
 		</list>

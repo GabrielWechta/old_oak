@@ -13,4 +13,19 @@
 <fullyQualifiedTypeName name="org.springframework.security.provisioning.InMemoryUserDetailsManager"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
 <fullyQualifiedTypeName name="com.vaadin.flow.component.login.LoginForm"/>
+<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.harman.StudentRepository"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.Logger"/>
+<fullyQualifiedTypeName name="ch.qos.logback.classic.Logger"/>
+<fullyQualifiedTypeName name="org.jboss.logging.Logger"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="org.hibernate.annotations.common.util.impl.LoggerFactory"/>
+<fullyQualifiedTypeName name="org.slf4j.Logger"/>
+<fullyQualifiedTypeName name="org.springframework.boot.CommandLineRunner"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+<fullyQualifiedTypeName name="org.springframework.boot.web.servlet.support.SpringBootServletInitializer"/>
+<fullyQualifiedTypeName name="org.springframework.boot.builder.SpringApplicationBuilder"/>
+<fullyQualifiedTypeName name="com.harman.TutorialApplication"/>
 </qualifiedTypeNameHistroy>
