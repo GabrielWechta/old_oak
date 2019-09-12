@@ -1,6 +1,5 @@
-insert into student values(1001,'Geralt','e134')
-insert into student values(1002,'Yennefer','a224')
-insert into student values(1003,'Ciri','c234')
-insert into student values(1004,'Triss','t224')
-insert into student values(2222,'Cirilla','c114')
+insert into employee values(1001,'z Rivi', 'kto jest twoja corka?', 'Ciri', 'BialyWilk_23', '12345six','Geralt')
+insert into employee values(1002,'Yennefer','z Vengerbergu', 'jak pachniesz?', 'Bez i agrest', 'FamFatalle', 'czarnoBialy')
+
+
 

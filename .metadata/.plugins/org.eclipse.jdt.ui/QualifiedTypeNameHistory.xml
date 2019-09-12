@@ -28,4 +28,6 @@
 <fullyQualifiedTypeName name="org.springframework.boot.web.servlet.support.SpringBootServletInitializer"/>
 <fullyQualifiedTypeName name="org.springframework.boot.builder.SpringApplicationBuilder"/>
 <fullyQualifiedTypeName name="com.harman.TutorialApplication"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
 </qualifiedTypeNameHistroy>
