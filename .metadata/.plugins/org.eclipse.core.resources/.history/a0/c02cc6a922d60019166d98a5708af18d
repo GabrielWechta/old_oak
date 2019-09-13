@@ -1,0 +1,5 @@
+package com.harman.database;
+
+public class BeanConfig {
+
+}

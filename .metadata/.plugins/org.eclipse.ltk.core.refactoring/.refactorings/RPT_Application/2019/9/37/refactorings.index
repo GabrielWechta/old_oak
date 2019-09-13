@@ -41,3 +41,8 @@
 1568284564307	Rename type 'TutorialApplication'
 1568284867717	Rename type 'Student'
 1568285106293	Rename type 'StudentRepository'
+1568299397407	Delete element
+1568300394026	Rename field 'id'
+1568361505322	Rename field 'tpl_id'
+1568374366377	Delete element
+1568379662894	Delete element

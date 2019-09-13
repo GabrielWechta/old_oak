@@ -1,5 +1,14 @@
-insert into employee values(1001,'z Rivi', 'kto jest twoja corka?', 'Ciri', 'BialyWilk_23', '12345six','Geralt')
-insert into employee values(1002,'Yennefer','z Vengerbergu', 'jak pachniesz?', 'Bez i agrest', 'FamFatalle', 'czarnoBialy')
+
+INSERT INTO `authority`(`name`, `id`) VALUES ('ROLE_ADMIN', '1');
+INSERT INTO `authority`(`name`, `id`) VALUES ('ROLE_USER', '2');
+
+insert into `employee`(`id`,`username`,`password`) values('1','Geralt','12345');
+insert into `employee`(`id`,`username`,`password`) values('2','Yennefer','6789');
+insert into `employee`(`id`,`username`,`password`) values('3','Ciri','101112');
+
+INSERT INTO `employee_authority`(`authority_id`, `employee_id`) VALUES ('1', '1');
+INSERT INTO `employee_authority`(`authority_id`, `employee_id`) VALUES ('2', '2');
+INSERT INTO `employee_authority`(`authority_id`, `employee_id`) VALUES ('1', '3');
 
 
 

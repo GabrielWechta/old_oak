@@ -1,0 +1,13 @@
+package com.harman.database;
+
+public class EmployeeRepositoryImpl implements EmployeeRepository {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+    @Override
+    public Employee findByid(String username) {
+        Query<User> query = sessionFactory.getCurrentSession().createQuery("FROM User u where u.username=:username", User.class);
+        query.setParameter("username", username);
+        return query.uniqueResult();
+    }
+}

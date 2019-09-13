@@ -1,82 +1,62 @@
 package com.harman.database;
 
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Columns;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.GrantedAuthority;
 
-@Entity(name = "Employee")
-public class Employee {
+@Entity
+@Table(name = "employee")
+public class Employee{
 	@Id
-	@GeneratedValue
-	private Long id;
-	
-	@Column(name = "firstname")
-	private String firstName;
-	
-	private String lastName;
-	private String question;
-	private String answer;
-	private String username;
-	private String password;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String id;
 
+	//@NotEmpty
+    @Column(nullable = false, unique = true)
+	private String username;
+    //@NotEmpty
+	private String password;
+    
+	
+    public Employee(String id, @NotEmpty String username, @NotEmpty String password) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+	}
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "employee_authority",
+            joinColumns = { @JoinColumn(name = "employee_id") },
+            inverseJoinColumns = { @JoinColumn(name = "authority_id") })
+    private Set<Authority> authorities = new HashSet<>();
+    
 	public Employee() {
 		super();
 	}
 
-	public Employee(Long id, String firstName, String lastName, String question, String answer, String username,
-			String password) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.question = question;
-		this.answer = answer;
-		this.username = username;
-		this.password = password;
-	}
-	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
 	}
 
 	public String getUsername() {
@@ -94,11 +74,10 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", question=" + question
-				+ ", answer=" + answer + ", username=" + username + ", password=" + password + "]";
+
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return (Collection<? extends GrantedAuthority>) this.authorities;
 	}
+
 
 }

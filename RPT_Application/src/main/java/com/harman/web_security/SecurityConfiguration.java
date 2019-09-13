@@ -1,8 +1,11 @@
 package com.harman.web_security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -10,9 +13,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import com.harman.LoginView;
+import com.harman.database.UserDetailsServiceImpl;
 import com.harman.web_service.CustomRequestCache;
 
 @EnableWebSecurity
@@ -23,12 +29,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private static final String LOGIN_FAILURE_URL = "/login?error"; 
 	private static final String LOGIN_URL = "/login";
 	private static final String LOGOUT_SUCCESS_URL = "/login";
-	
+    
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception { 
 	    return super.authenticationManagerBean();
 	}
+
 
 	@Bean
 	public CustomRequestCache requestCache() {
@@ -38,13 +45,39 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
-		UserDetails user =
-				User.withUsername("user")
-						.password("{noop}password")
-						.roles("USER")
-						.build();
-
-		return new InMemoryUserDetailsManager(user);
+		return new UserDetailsServiceImpl();
+	}
+			
+//		UserDetails user =
+//				User.withUsername("user")
+//						.password("{noop}password")
+//						.roles("USER")
+//						.build();
+//
+//		return new InMemoryUserDetailsManager(user);
+	
+//
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+    
+//    @Bean
+//    public DaoAuthenticationProvider authenticationProvider() {
+//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//        authProvider.setUserDetailsService(userDetailsService());
+//        authProvider.setPasswordEncoder(passwordEncoder());
+//        return authProvider;
+//    }
+    
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) {
+//        auth.authenticationProvider(authenticationProvider());
+//    }
+    
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
 	}
 	
 	@Override
@@ -66,7 +99,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	            .anyRequest().authenticated()
 
 	            // Configure the login page.
-	            .and().formLogin().loginPage("/" + LoginView.ROUTE).permitAll()
+	            .and().formLogin().loginPage("/" + LoginView.ROUTE).usernameParameter("username").passwordParameter("password").permitAll()
 	            .failureUrl(LOGIN_FAILURE_URL)
 
 	            // Configure logout
@@ -90,4 +123,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/frontend-es5/**",
 				"/frontend-es6/**");
 	}
+	
+//    @Autowired
+//    private UserService userService;
+//    
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder(){
+//        return new BCryptPasswordEncoder();
+//    }
+//    
+//    @Bean
+//    public DaoAuthenticationProvider authenticationProvider(){
+//        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+//        auth.setUserDetailsService(userService);
+//        auth.setPasswordEncoder(passwordEncoder());
+//        return auth;
+//    }
+//    
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(authenticationProvider());
+//    }
 }

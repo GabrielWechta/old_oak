@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.harman.database.PdfUserDetails;
 import com.harman.web_service.CustomRequestCache;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
@@ -58,4 +59,4 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver{
 			login.setError(true); //
 		}
 	}
-} 
+}

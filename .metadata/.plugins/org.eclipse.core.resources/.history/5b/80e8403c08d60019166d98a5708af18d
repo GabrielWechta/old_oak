@@ -1,0 +1,78 @@
+package com.harman.database;
+
+import java.util.Optional;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+@Repository
+public class EmployeeRepositoryImpl implements EmployeeRepository {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+    @Override
+    public Employee findByid(String username) {
+        Query<Employee> query = sessionFactory.getCurrentSession().createQuery("FROM Employee e where e.username=:username", Employee.class);
+        query.setParameter("username", username);
+        return query.uniqueResult();
+    }
+	@Override
+	public <S extends Employee> S save(S entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public <S extends Employee> Iterable<S> saveAll(Iterable<S> entities) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Optional<Employee> findById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean existsById(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public Iterable<Employee> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Iterable<Employee> findAllById(Iterable<String> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void deleteById(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void delete(Employee entity) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void deleteAll(Iterable<? extends Employee> entities) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
+    
+}
