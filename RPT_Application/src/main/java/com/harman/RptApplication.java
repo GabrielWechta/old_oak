@@ -16,7 +16,7 @@ import com.harman.database.UserDetailsServiceImpl;
 import com.harman.database.UserDao;
 
 @SpringBootApplication
-public class RptApplication implements CommandLineRunner{
+public class RptApplication{
 
 	private static final Logger logger = LoggerFactory.getLogger(RptApplication.class);
 
@@ -32,19 +32,19 @@ public class RptApplication implements CommandLineRunner{
         logger.info("----------logger in RptApllication ended----------------");
     }
     
-    @Override
-    public void run(String... args) throws Exception{ 
-    	
+    @Bean
+    public CommandLineRunner loadData(EmployeeRepository employeeRepository) {
+    	return (args) -> {
     	System.out.println("++++++++++++++++++++++++++++++++++++++++HIBERNATE++++++++++++++++++++++++++++++++++++++++++++");
     	//logger.info("Student id 1001 -> {}", repository.findById(1001L));
     	
     	logger.info("All users 1 -> {}", employeeRepository.findByusername("Geralt"));
     	
     	//Insert
-    	logger.info("Inserting -> {}", employeeRepository.save(new Employee("Jaskier",  passwordEncoder.encode("cudny"))));
-    	logger.info("Inserting -> {}", employeeRepository.save(new Employee("Triss",  passwordEncoder.encode("kasztan"))));
+    	employeeRepository.save(new Employee("Jaskier",  passwordEncoder.encode("cudny")));
+    	employeeRepository.save(new Employee("Triss",  passwordEncoder.encode("kasztan")));
+    	};
     }
-    
 	@Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
      return new BCryptPasswordEncoder();

@@ -1,0 +1,28 @@
+package com.harman.web_pages;
+
+import com.harman.database.Employee;
+import com.vaadin.flow.component.crud.Crud;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.spring.annotation.UIScope;
+
+@Route("users")
+@UIScope
+public class EmployeesCRUDView extends VerticalLayout {
+
+	private final CustomerRepository repo;
+	final Grid<Customer> grid;
+
+	public MainView(CustomerRepository repo) {
+		this.repo = repo;
+		this.grid = new Grid<>(Customer.class);
+		add(grid);
+		listCustomers();
+	}
+
+	private void listCustomers() {
+		grid.setItems(repo.findAll());
+	}
+
+	
+}

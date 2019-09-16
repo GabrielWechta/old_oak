@@ -56,7 +56,7 @@
         
 		<dependency>
 		    <groupId>com.vaadin</groupId>
-			<artifactId>vaadin-crud-flow</artifactId>		
+			<artifactId>vaadin-grid-flow</artifactId>		
 		</dependency>
     <!-- SECURITY -->
         <dependency>

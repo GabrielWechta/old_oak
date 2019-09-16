@@ -1,23 +1,28 @@
 package com.harman.web_pages;
 
 import com.harman.database.Employee;
-import com.vaadin.flow.component.crud.Crud;
+import com.harman.database.EmployeeService;
+import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.UIScope;
 
 @Route("users")
 @UIScope
-public class EmployeesCRUDView {
+public class EmployeesCRUDView extends VerticalLayout {
 
-//	Crud<Employee> crud = new Crud<>(Employee.class, createPersonEditor());
-//
-//	PersonDataProvider dataProvider = new PersonDataProvider();
-//
-//	crud.setDataProvider(dataProvider);
-//	crud.addSaveListener(e -> dataProvider.persist(e.getItem()));
-//	crud.addDeleteListener(e -> dataProvider.delete(e.getItem()));
-//
-//	crud.getGrid().removeColumnByKey("id");
-//	crud.addThemeVariants(CrudVariant.NO_BORDER);
+	private EmployeeService employeeService = EmployeeService.getInstance(); 
+    private Grid<Employee> grid = new Grid<>(Employee.class);
+    
+	public EmployeesCRUDView() {
+        updateList();
+        grid.addColumn(Employee::getUsername).setHeader("Name");
+        grid.addColumn(Employee::getPassword).setHeader("Passy");
+        add(grid);
+        setSizeFull();
+	}
 	
+    public void updateList() {
+        grid.setItems(employeeService.findAll());
+    }
 }

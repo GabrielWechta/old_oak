@@ -1,0 +1,23 @@
+package com.harman.web_pages;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.harman.database.Employee;
+import com.harman.database.EmployeeRepository;
+import com.vaadin.flow.component.crud.Crud;
+import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.spring.annotation.UIScope;
+
+@Route("users")
+@UIScope
+public class EmployeesCRUDView extends VerticalLayout {
+
+	Crud<User> crud = new Crud<>(User.class, new UserCrudEditor());
+
+	crud.setDataProvider(new UserCrudDataProvider());
+
+	crud.addSaveListener(e -> dataProvider.persist(crud.getEditor().getItem()));
+	crud.addDeleteListener(e -> dataProvider.delete(crud.getEditor().getItem()));
+}
