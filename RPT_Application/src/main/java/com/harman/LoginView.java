@@ -2,6 +2,8 @@ package com.harman;
 
 import java.util.Collections;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,7 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.harman.database.PdfUserDetails;
+import com.harman.database.UserDao;
+import com.harman.database.UserDetailsServiceImpl;
 import com.harman.web_service.CustomRequestCache;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
@@ -25,7 +28,6 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Login")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver{
     public static final String ROUTE = "login";
-
     private LoginOverlay login = new LoginOverlay();
 
     @Autowired
@@ -34,7 +36,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver{
         login.setOpened(true);
         login.setTitle("RPT Application");
         login.setDescription("Welcome to Harman RPT");
-
+        
         getElement().appendChild(login.getElement());
 
         login.addLoginListener(e -> { 

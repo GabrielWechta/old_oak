@@ -1,6 +1,5 @@
 package com.harman.database;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,27 +15,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "employee")
 public class Employee{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 
-	//@NotEmpty
-    @Column(nullable = false, unique = true)
+	@NotEmpty
+    @Column(unique = true)
 	private String username;
-    //@NotEmpty
+    @NotEmpty
 	private String password;
     
-	
-    public Employee(String id, @NotEmpty String username, @NotEmpty String password) {
+	public Employee(String username, String password) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
 	}

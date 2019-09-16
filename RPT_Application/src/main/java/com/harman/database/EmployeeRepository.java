@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EmployeeRepository extends JpaRepository<Employee, String>{
 	
-	Employee findByusername(String id);
+	Employee findByusername(String username);
 
 }
