@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.harman.database.Employee;
 import com.harman.database.EmployeeRepository;
+import com.harman.database.EmployeeService;
 import com.harman.database.UserDetailsServiceImpl;
 import com.harman.database.UserDao;
 
@@ -19,14 +20,13 @@ import com.harman.database.UserDao;
 public class RptApplication{
 
 	private static final Logger logger = LoggerFactory.getLogger(RptApplication.class);
-
+	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	private EmployeeService employeeService;
 
-	
     public static void main(String[] args) {
         SpringApplication.run(RptApplication.class, args);
         logger.info("----------logger in RptApllication ended----------------");
@@ -36,15 +36,17 @@ public class RptApplication{
     public CommandLineRunner loadData(EmployeeRepository employeeRepository) {
     	return (args) -> {
     	System.out.println("++++++++++++++++++++++++++++++++++++++++HIBERNATE++++++++++++++++++++++++++++++++++++++++++++");
-    	//logger.info("Student id 1001 -> {}", repository.findById(1001L));
     	
-    	logger.info("All users 1 -> {}", employeeRepository.findByusername("Geralt"));
+    	employeeService.save(new Employee("Dudu", passwordEncoder.encode("cebula")));
+    	employeeService.ensureTestData();
+    	logger.info("All users ES -> {}", employeeService.findAll());
     	
     	//Insert
     	employeeRepository.save(new Employee("Jaskier",  passwordEncoder.encode("cudny")));
     	employeeRepository.save(new Employee("Triss",  passwordEncoder.encode("kasztan")));
     	};
     }
+    
 	@Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
      return new BCryptPasswordEncoder();

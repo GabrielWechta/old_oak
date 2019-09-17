@@ -25,14 +25,6 @@
             <url>https://maven.vaadin.com/vaadin-prereleases</url>
         </pluginRepository>
     </pluginRepositories>
-
-    <repositories>
-        <repository>
-            <id>vaadin-prereleases</id>
-            <url>https://maven.vaadin.com/vaadin-prereleases</url>
-        </repository>
-
-    </repositories>
     
     <dependencyManagement>
         <dependencies>
@@ -56,7 +48,7 @@
         
 		<dependency>
 		    <groupId>com.vaadin</groupId>
-			<artifactId>vaadin-grid-flow</artifactId>		
+			<artifactId>vaadin-crud-flow</artifactId>		
 		</dependency>
     <!-- SECURITY -->
         <dependency>
@@ -105,15 +97,12 @@
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-		    <version>5.1.46</version>
-		</dependency>
+		    </dependency>
 		
 		 <dependency>
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-core</artifactId>
-         <version>${hibernate.version}</version>
-      </dependency>
-
+         </dependency>
     </dependencies>
 
     <build>
@@ -163,9 +152,6 @@
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <jvmArguments>-Dvaadin.productionMode</jvmArguments>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>

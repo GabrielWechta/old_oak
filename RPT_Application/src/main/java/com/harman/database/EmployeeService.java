@@ -8,32 +8,32 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+@Service
 public class EmployeeService {
 
-	private static EmployeeService instance;
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	private static final Logger LOGGER = Logger.getLogger(EmployeeService.class.getName());
-
-	private final HashMap<String, Employee> contacts = new HashMap<>();
 	private int nextId = 0;
-
+	
 	private EmployeeService() {
 	}
 
-	public static EmployeeService getInstance() {
-		if (instance == null) {
-			instance = new EmployeeService();
-			instance.ensureTestData();
-		}
-		return instance;
-	}
-
-	public synchronized List<Employee> findAll() {
+	public List<Employee> findAll() {
 		return findAll(null);
 	}
 
-	public synchronized List<Employee> findAll(String stringFilter) {
+	public List<Employee> findAll(String stringFilter) {
 		ArrayList<Employee> arrayList = new ArrayList<>();
-		for (Employee contact : contacts.values()) {
+		for (Employee contact : employeeRepository.findAll()) {
 			try {
 				boolean passesFilter = (stringFilter == null || stringFilter.isEmpty())
 						|| contact.toString().toLowerCase().contains(stringFilter.toLowerCase());
@@ -54,9 +54,9 @@ public class EmployeeService {
 		return arrayList;
 	}
 
-	public synchronized List<Employee> findAll(String stringFilter, int start, int maxresults) {
+	public List<Employee> findAll(String stringFilter, int start, int maxresults) {
 		ArrayList<Employee> arrayList = new ArrayList<>();
-		for (Employee contact : contacts.values()) {
+		for (Employee contact : employeeRepository.findAll()) {
 			try {
 				boolean passesFilter = (stringFilter == null || stringFilter.isEmpty())
 						|| contact.toString().toLowerCase().contains(stringFilter.toLowerCase());
@@ -81,15 +81,15 @@ public class EmployeeService {
 		return arrayList.subList(start, end);
 	}
 
-	public synchronized int count() {
-		return contacts.size();
+	public int count() {
+		return (int) employeeRepository.count();
 	}
 
-	public synchronized void delete(Employee value) {
-		contacts.remove(value.getId());
+	public void delete(Employee entry) {
+		employeeRepository.delete(entry);
 	}
 
-	public synchronized void save(Employee entry) {
+	public void save(Employee entry) {
 		if (entry == null) {
 			LOGGER.log(Level.SEVERE,
 					"Employee is null. Are you sure you have connected your form to the application as described in tutorial chapter 7?");
@@ -104,11 +104,10 @@ public class EmployeeService {
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
-		contacts.put(entry.getId(), entry);
+		employeeRepository.save(entry);
 	}
 
 	public void ensureTestData() {
-		if (findAll().isEmpty()) {
 			final String[] names = new String[] { "Gabrielle Patel", "Brian Robinson", "Eduardo Haugen",
 					"Koen Johansen", "Alejandro Macdonald", "Angel Karlsson", "Yahir Gustavsson", "Haiden Svensson",
 					"Emily Stewart", "Corinne Davis", "Ryann Davis", "Yurem Jackson", "Kelly Gustavsson",
@@ -118,13 +117,8 @@ public class EmployeeService {
 					"Jaydan Jackson", "Bernard Nilsen" };
 			for (String name : names) {
 				String[] split = name.split(" ");
-				Employee c = new Employee(split[0], split[1]);
+				Employee c = new Employee(split[0], passwordEncoder.encode(split[1]));
 				save(c);
 			}
-		
-		LOGGER.info("_____________________________________________________________");
-		LOGGER.info(Integer.toString(count()));
-		LOGGER.info("_____________________________________________________________");
-		}
 	}
 }

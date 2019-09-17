@@ -1,7 +1,0 @@
-package com.harman;
-
-import org.springframework.boot.CommandLineRunner;
-
-public class ApplicationStartupRunner implements CommandLineRunner{
-
-}

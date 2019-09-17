@@ -30,9 +30,14 @@ public class Employee implements Cloneable{
 	@NotEmpty
     @Column(unique = true)
 	private String username;
+	
     @NotEmpty
 	private String password;
     
+	public Employee() {
+		super();
+	}
+	
 	public Employee(String username, String password) {
 		super();
 		this.username = username;
@@ -45,10 +50,6 @@ public class Employee implements Cloneable{
             inverseJoinColumns = { @JoinColumn(name = "authority_id") })
     private Set<Authority> authorities = new HashSet<>();
     
-	public Employee() {
-		super();
-	}
-	
     @Override
     public Employee clone() throws CloneNotSupportedException {
         return (Employee) super.clone();

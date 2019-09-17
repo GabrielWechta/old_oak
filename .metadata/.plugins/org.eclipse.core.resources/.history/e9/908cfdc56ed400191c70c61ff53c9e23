@@ -1,5 +1,0 @@
-package com.harman;
-
-public interface UserRepository {
-
-}
