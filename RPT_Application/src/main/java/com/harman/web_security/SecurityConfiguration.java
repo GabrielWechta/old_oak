@@ -3,7 +3,6 @@ package com.harman.web_security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,23 +19,14 @@ import com.harman.web_service.CustomRequestCache;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-//	@Autowired
-//	private UserDetailsService userDetailsService;
+
 	@Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
-	private static final String LOGIN_PROCESSING_URL = "/login";
 	private static final String LOGIN_FAILURE_URL = "/login?error"; 
-	private static final String LOGIN_URL = "/login";
 	private static final String LOGOUT_SUCCESS_URL = "/login";
-	private static final String SIGN_UP_URL = "/users";
-//	@Autowired
-//	  public SecurityConfiguration(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-//	        this.userDetailsService = userDetailsService;
-//	        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-//	    }
-    
+	private static final String USERS_URL = "/users";
+
 	 @Override
 	   public void configure(AuthenticationManagerBuilder auth) throws Exception {
 	       auth.userDetailsService(userDetailsService()).passwordEncoder(bCryptPasswordEncoder);
@@ -58,19 +48,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public UserDetailsService userDetailsService() {
 		return new UserDetailsServiceImpl();
 	}
-			
-//		UserDetails user =
-//				User.withUsername("user")
-//						.password("{noop}password")
-//						.roles("USER")
-//						.build();
-//
-//		return new InMemoryUserDetailsManager(user);
-	
-//	 @Override
-//	    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//	        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-//	    }
 	 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -114,7 +91,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/webjars/**",
 				"/frontend-es5/**",
 				"/frontend-es6/**",
-				"/h2-comsole",
-				SIGN_UP_URL);
+				"/h2-comsole");
 	}
 }

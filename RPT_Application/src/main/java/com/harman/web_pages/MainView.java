@@ -1,50 +1,35 @@
 package com.harman.web_pages;
 
-import java.util.Locale;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.harman.utils.Greeter;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
+import com.harman.utils.LogoutButton;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.dom.Style;
-import com.vaadin.flow.i18n.LocaleChangeEvent;
-import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 
 @Route
-public class MainView extends VerticalLayout implements LocaleChangeObserver {
+public class MainView extends VerticalLayout {
 
-    private RouterLink link, link_2;
+	private static final long serialVersionUID = -1757630587061487264L;
+	private RouterLink link, link_2;
 
-    public MainView(@Autowired Greeter greeter) {//, @Autowired ExampleTemplate template) {
-    	
-    	
-        H1 secondheading = new H1("Just checking");
-        
-        Label greeting = new Label(greeter.sayHello());
-        Style grretingStyle = greeting.getElement().getStyle();
-        grretingStyle.set("display", "block");
-        grretingStyle.set("margin-bottom", "10px");
+	public MainView() {
 
-        link = new RouterLink("to view",ViewComponent.class);
-        link_2 = new RouterLink("to nice feeling", NiceFeelingComponent.class);
-       // link_3 = new RouterLink("h2-console", );
-        
-        Style linkStyle = link.getElement().getStyle();
-        linkStyle.set("display", "block");
-        linkStyle.set("margin-bottom", "10px");
+		H1 secondheading = new H1("RPT Project Main View");
 
-        add(secondheading, greeting, link, link_2);// template); 
-    }
+		Label greeting = new Label("Hello");
+		Style grretingStyle = greeting.getElement().getStyle();
+		grretingStyle.set("display", "block");
+		grretingStyle.set("margin-bottom", "10px");
 
-    @Override
-    public void localeChange(LocaleChangeEvent event) {
-        link.setText("to view");
-    }
+		link = new RouterLink("to view", ViewComponent.class);
+		link_2 = new RouterLink("users", EmployeesCRUDView.class);
 
+		Style linkStyle = link.getElement().getStyle();
+		linkStyle.set("display", "block");
+		linkStyle.set("margin-bottom", "10px");
+
+		add(secondheading, greeting, new LogoutButton(), link, link_2);
+	}
 }

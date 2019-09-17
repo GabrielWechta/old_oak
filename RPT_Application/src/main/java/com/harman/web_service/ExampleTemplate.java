@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Scope;
 import com.harman.utils.Greeter;
 import com.harman.web_service.ExampleTemplate.ExampleModel;
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.templatemodel.TemplateModel;
@@ -17,7 +16,6 @@ import com.vaadin.flow.templatemodel.TemplateModel;
  */
 @SuppressWarnings("serial")
 @Tag("example-template")
-@JsModule("./src/example-template.js")
 @SpringComponent
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ExampleTemplate extends PolymerTemplate<ExampleModel> {

@@ -2,8 +2,6 @@ package com.harman;
 
 import java.util.Collections;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,8 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.harman.database.UserDao;
-import com.harman.database.UserDetailsServiceImpl;
 import com.harman.web_service.CustomRequestCache;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
@@ -26,38 +22,44 @@ import com.vaadin.flow.router.Route;
 @Tag("sa-login-view")
 @Route(value = LoginView.ROUTE)
 @PageTitle("Login")
-public class LoginView extends VerticalLayout implements BeforeEnterObserver{
-    public static final String ROUTE = "login";
-    private LoginOverlay login = new LoginOverlay();
+public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
-    @Autowired
-    public LoginView(AuthenticationManager authenticationManager, CustomRequestCache requestCache) {
-    	login.setAction("login");
-        login.setOpened(true);
-        login.setTitle("RPT Application");
-        login.setDescription("Welcome to Harman RPT");
-        
-        getElement().appendChild(login.getElement());
+	private static final long serialVersionUID = 4455204321765926669L;
+	public static final String ROUTE = "login";
+	private LoginOverlay login = new LoginOverlay();
 
-        login.addLoginListener(e -> { 
-            try {
-                // try to authenticate with given credentials, should always return not null or throw an {@link AuthenticationException}
-                final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(e.getUsername(), e.getPassword())); // 
+	@Autowired
+	public LoginView(AuthenticationManager authenticationManager, CustomRequestCache requestCache) {
+		login.setAction("login");
+		login.setOpened(true);
+		login.setTitle("RPT Application");
+		login.setDescription("Welcome to Harman RPT");
 
-                // if authentication was successful we will update the security context and redirect to the page requested first
-                SecurityContextHolder.getContext().setAuthentication(authentication);  
-                login.close(); 
-                UI.getCurrent().navigate(requestCache.resolveRedirectUrl());
+		getElement().appendChild(login.getElement());
 
-            } catch (AuthenticationException ex) { // 
-                login.setError(true);
-            }
-        });
-    }
-    
+		login.addLoginListener(e -> {
+			try {
+				// try to authenticate with given credentials, should always return not null or
+				// throw an {@link AuthenticationException}
+				final Authentication authentication = authenticationManager
+						.authenticate(new UsernamePasswordAuthenticationToken(e.getUsername(), e.getPassword())); //
+
+				// if authentication was successful we will update the security context and
+				// redirect to the page requested first
+				SecurityContextHolder.getContext().setAuthentication(authentication);
+				login.close();
+				UI.getCurrent().navigate(requestCache.resolveRedirectUrl());
+
+			} catch (AuthenticationException ex) { //
+				login.setError(true);
+			}
+		});
+	}
+
 	@Override
-	public void beforeEnter(BeforeEnterEvent event) { // 
-		if(!event.getLocation().getQueryParameters().getParameters().getOrDefault("error", Collections.emptyList()).isEmpty()) {
+	public void beforeEnter(BeforeEnterEvent event) { //
+		if (!event.getLocation().getQueryParameters().getParameters().getOrDefault("error", Collections.emptyList())
+				.isEmpty()) {
 			login.setError(true); //
 		}
 	}

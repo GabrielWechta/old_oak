@@ -21,39 +21,39 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "employee")
-public class Employee implements Cloneable{
+public class Employee implements Cloneable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 
 	@NotEmpty
-    @Column(unique = true)
+	@Column(unique = true)
 	private String username;
-	
-    @NotEmpty
+
+	@NotEmpty
 	private String password;
-    
+
 	public Employee() {
 		super();
 	}
-	
+
 	public Employee(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
 	}
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "employee_authority",
-            joinColumns = { @JoinColumn(name = "employee_id") },
-            inverseJoinColumns = { @JoinColumn(name = "authority_id") })
-    private Set<Authority> authorities = new HashSet<>();
-    
-    @Override
-    public Employee clone() throws CloneNotSupportedException {
-        return (Employee) super.clone();
-    }
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "employee_authority", joinColumns = { @JoinColumn(name = "employee_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "authority_id") })
+
+	private Set<Authority> authorities = new HashSet<>();
+
+	@Override
+	public Employee clone() throws CloneNotSupportedException {
+		return (Employee) super.clone();
+	}
 
 	public String getId() {
 		return id;
@@ -79,6 +79,7 @@ public class Employee implements Cloneable{
 		this.password = password;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return (Collection<? extends GrantedAuthority>) this.authorities;
 	}

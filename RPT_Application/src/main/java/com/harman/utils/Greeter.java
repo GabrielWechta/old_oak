@@ -7,8 +7,7 @@ import com.vaadin.flow.spring.annotation.UIScope;
 @UIScope
 public class Greeter {
 
-    public String sayHello() {
-        return "Hello from bean " + toString();
-    }
-
+	public String sayHello() {
+		return "Hello from bean " + toString();
+	}
 }
