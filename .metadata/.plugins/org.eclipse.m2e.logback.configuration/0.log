@@ -3844,3 +3844,198 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.vaadin.we
 2019-09-16 17:09:08,966 [Worker-195: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2019-09-16 17:09:08,976 [Worker-195: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2019-09-16 17:09:08,977 [Worker-195: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:24:14,865 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-09-17 08:26:24,645 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.vaadin.spring:spring-flow-examples:1.0.0-SNAPSHOT @ /home/gabriel/RPT-workspace/RPT_Application/pom.xml.
+2019-09-17 08:26:27,980 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:26:27,986 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:26:28,010 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:26:28,013 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:26:28,014 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:28:39,497 [Worker-0: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:28:39,508 [Worker-0: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:28:39,512 [Worker-0: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:28:39,518 [Worker-0: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:28:39,518 [Worker-0: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:28:52,802 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:28:52,803 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:28:52,806 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:28:52,809 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:28:52,809 [Worker-15: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:30:29,727 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:30:29,728 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:30:29,731 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:30:29,734 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:30:29,734 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:31:15,104 [Worker-12: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:31:15,105 [Worker-12: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:31:15,108 [Worker-12: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:31:15,111 [Worker-12: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:31:15,111 [Worker-12: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:34:31,949 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:34:31,949 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:34:31,952 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:34:31,954 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:34:31,954 [Worker-3: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:35:22,691 [Worker-1: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:35:22,692 [Worker-1: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:35:22,695 [Worker-1: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:35:22,709 [Worker-1: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:35:22,709 [Worker-1: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:35:23,604 [Worker-14: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:35:23,605 [Worker-14: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:35:23,608 [Worker-14: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:35:23,615 [Worker-14: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:35:23,625 [Worker-14: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 08:45:45,829 [Worker-22: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:45:45,829 [Worker-22: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:45:45,832 [Worker-22: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 08:45:45,835 [Worker-22: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 08:45:45,835 [Worker-22: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:04:40,613 [Worker-29: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:04:40,614 [Worker-29: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:04:40,621 [Worker-29: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:04:40,623 [Worker-29: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:04:40,623 [Worker-29: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:05:07,756 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:05:07,757 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:05:07,759 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:05:07,762 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:05:07,762 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:12:17,363 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.vaadin.spring:spring-flow-examples:1.0.0-SNAPSHOT @ /home/gabriel/RPT-workspace/RPT_Application/pom.xml.
+2019-09-17 09:12:19,561 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:12:19,564 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:12:19,579 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:12:19,582 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:12:19,583 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:12:20,911 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:12:20,912 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:12:20,919 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:12:20,929 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:12:20,929 [Worker-28: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:16:54,369 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:16:54,370 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:16:54,375 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:16:54,377 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:16:54,377 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:19:22,549 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:19:22,549 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:19:22,552 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:19:22,554 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:19:22,554 [Worker-32: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:23:52,868 [Worker-36: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:23:52,869 [Worker-36: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:23:52,876 [Worker-36: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:23:52,878 [Worker-36: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:23:52,879 [Worker-36: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:26:32,905 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:26:32,905 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:26:32,908 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:26:32,909 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:26:32,910 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:27:41,725 [Worker-39: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:27:41,726 [Worker-39: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:27:41,729 [Worker-39: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:27:41,731 [Worker-39: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:27:41,731 [Worker-39: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:28:30,209 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:28:30,209 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:28:30,212 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:28:30,215 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:28:30,215 [Worker-37: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:29:17,445 [Worker-41: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:29:17,445 [Worker-41: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:29:17,448 [Worker-41: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:29:17,450 [Worker-41: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:29:17,450 [Worker-41: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:29:59,630 [Worker-33: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:29:59,631 [Worker-33: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:29:59,633 [Worker-33: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:29:59,635 [Worker-33: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:29:59,635 [Worker-33: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 09:31:31,065 [Worker-40: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:31:31,066 [Worker-40: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:31:31,068 [Worker-40: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 09:31:31,070 [Worker-40: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 09:31:31,070 [Worker-40: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:26:24,702 [Worker-91: Launching RptApplication] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.vaadin.spring:spring-flow-examples:1.0.0-SNAPSHOT @ /home/gabriel/RPT-workspace/RPT_Application/pom.xml.
+2019-09-17 12:26:28,826 [Worker-91: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:26:28,830 [Worker-91: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-17 12:26:28,830 [Worker-91: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-17 12:26:28,834 [Worker-91: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:26:28,834 [Worker-91: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:26:30,160 [Worker-90: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:26:30,160 [Worker-90: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:26:30,268 [Worker-90: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:26:30,334 [Worker-90: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:26:30,335 [Worker-90: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:34:25,271 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:34:25,272 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:34:25,275 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:34:25,291 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:34:25,292 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:36:06,561 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:36:06,561 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:36:06,565 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:36:06,568 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:36:06,568 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:38:46,409 [Worker-98: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:38:46,409 [Worker-98: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:38:46,411 [Worker-98: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:38:46,412 [Worker-98: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:38:46,413 [Worker-98: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:39:47,077 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:39:47,078 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:39:47,080 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:39:47,089 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:39:47,089 [Worker-97: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:40:35,832 [Worker-99: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:40:35,832 [Worker-99: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:40:35,835 [Worker-99: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:40:35,836 [Worker-99: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:40:35,837 [Worker-99: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:42:42,500 [Worker-96: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:42:42,501 [Worker-96: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:42:42,504 [Worker-96: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:42:42,507 [Worker-96: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:42:42,507 [Worker-96: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:44:13,583 [Worker-97: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:44:13,583 [Worker-97: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:44:13,586 [Worker-97: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:44:13,587 [Worker-97: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:44:13,587 [Worker-97: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:45:31,117 [Worker-100: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:45:31,117 [Worker-100: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:45:31,119 [Worker-100: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:45:31,121 [Worker-100: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:45:31,121 [Worker-100: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:45:40,960 [Worker-98: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:45:40,960 [Worker-98: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:45:40,963 [Worker-98: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:45:40,967 [Worker-98: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:45:40,968 [Worker-98: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:48:22,823 [Worker-99: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:48:22,823 [Worker-99: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:48:22,830 [Worker-99: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:48:22,839 [Worker-99: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:48:22,839 [Worker-99: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:52:23,708 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:52:23,709 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:52:23,711 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:52:23,713 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:52:23,713 [Worker-93: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 12:58:43,578 [Worker-104: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:58:43,579 [Worker-104: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:58:43,581 [Worker-104: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 12:58:43,583 [Worker-104: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 12:58:43,583 [Worker-104: Launching RptApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 13:03:53,102 [Worker-93: Cleaning all projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.vaadin.spring:spring-flow-examples:1.0.0-SNAPSHOT @ /home/gabriel/RPT-workspace/RPT_Application/pom.xml.
+2019-09-17 13:03:55,746 [Worker-100: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 13:03:55,749 [Worker-100: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 13:03:55,770 [Worker-100: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 13:03:55,783 [Worker-100: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 13:03:55,783 [Worker-100: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources
+2019-09-17 13:10:20,146 [Worker-110: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 13:10:20,147 [Worker-110: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 13:10:20,152 [Worker-110: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-09-17 13:10:20,159 [Worker-110: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-17 13:10:20,159 [Worker-110: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/gabriel/RPT-workspace/RPT_Application/src/test/resources

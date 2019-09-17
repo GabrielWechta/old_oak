@@ -1,0 +1,44 @@
+package com.harman.web_pages;
+
+import com.harman.database.Employee;
+import com.harman.database.EmployeeService;
+import com.vaadin.flow.component.crud.Crud;
+import com.vaadin.flow.component.crud.CrudEditor;
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.spring.annotation.UIScope;
+
+@Route("users")
+@UIScope
+public class EmployeesCRUDView extends VerticalLayout {
+
+	private EmployeeService employeeService; 
+    //private Grid<Employee> grid = new Grid<>();
+	
+	Crud<Employee> crud = new Crud<>(Employee.class, createPersonEditor());
+
+	PersonDataProvider dataProvider = new PersonDataProvider();
+
+	crud.setDataProvider(dataProvider);
+	crud.addSaveListener(e -> dataProvider.persist(e.getItem()));
+	crud.addDeleteListener(e -> dataProvider.delete(e.getItem()));
+
+	crud.getGrid().removeColumnByKey("id");
+	crud.addThemeVariants(CrudVariant.NO_BORDER);
+    
+	private CrudEditor<Person> createPersonEditor() {
+	    TextField firstName = new TextField("First name");
+	    TextField lastName = new TextField("Last name");
+	    FormLayout form = new FormLayout(firstName, lastName);
+
+	    Binder<Employee> binder = new Binder<>(Employee.class);
+	    binder.bind(firstName, Employee::getUsername, Employee::setFirstName);
+	    binder.bind(lastName, Employee::getLastName, Employee::setLastName);
+
+	    return new BinderCrudEditor<>(binder, form);
+	}
+}
+ 

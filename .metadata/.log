@@ -1537,3 +1537,13 @@ Contains: Missing com.vaadin.webjar:vaadin-charts:jar:javadoc:6.2.3
 !MESSAGE Could not resolve artifact com.vaadin.webjar:vaadin-charts:jar:javadoc:6.2.3
 !SUBENTRY 2 org.eclipse.m2e.core 4 -1 2019-09-16 14:26:50.596
 !MESSAGE Missing com.vaadin.webjar:vaadin-charts:jar:javadoc:6.2.3
+!SESSION 2019-09-17 08:23:34.698 -----------------------------------------------
+eclipse.buildId=4.11.0.I20190307-0500
+java.version=1.8.0_201
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.core 1 0 2019-09-17 08:23:57.103
+!MESSAGE Using Apache MINA sshd as ssh client.

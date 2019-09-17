@@ -1,0 +1,40 @@
+package com.harman.web_pages;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.harman.database.Employee;
+import com.harman.database.EmployeeService;
+import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.spring.annotation.UIScope;
+
+@Route("users")
+@UIScope
+public class EmployeesCRUDView extends VerticalLayout {
+
+	private EmployeeService employeeService; 
+    //private Grid<Employee> grid = new Grid<>();
+    
+    
+	public EmployeesCRUDView(EmployeeService employeeService) {
+		Grid<Employee> grid = new Grid<>();
+		List<Employee> list = new ArrayList<>();
+		grid.setPageSize(0);
+        grid.setDataProvider(new ListDataProvider<>(list));
+        grid.setItems();
+		grid.addColumn(Employee::getId).setHeader("Id");
+        grid.addColumn(Employee::getUsername).setHeader("Name");
+        grid.addColumn(Employee::getPassword).setHeader("Passy");
+        updateList();
+        add(grid);
+        setSizeFull();
+	}
+	
+    public void updateList() {
+        
+    }
+}
+ 
