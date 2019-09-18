@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +36,8 @@ public class Employee implements Cloneable {
 	@NotEmpty
 	private String password;
 
+	private String authority;
+
 	public Employee() {
 		super();
 	}
@@ -44,11 +48,23 @@ public class Employee implements Cloneable {
 		this.password = password;
 	}
 
+	public Employee(@NotEmpty String username, @NotEmpty String password, Authority authority) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.authorities.add(authority);
+		
+		if(authority.getName().equals(AuthorityType.ROLE_USER)) {
+			this.authority = AuthorityType.ROLE_USER.toString();
+		}else this.authority = AuthorityType.ROLE_ADMIN.toString();
+	}
+
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "employee_authority", joinColumns = { @JoinColumn(name = "employee_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "authority_id") })
 
-	private Set<Authority> authorities = new HashSet<>();
+	@Enumerated(EnumType.STRING)
+	public Set<Authority> authorities = new HashSet<>();
 
 	@Override
 	public Employee clone() throws CloneNotSupportedException {
@@ -77,6 +93,14 @@ public class Employee implements Cloneable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(AuthorityType auth) {
+		this.authority = auth.name();
 	}
 
 	@SuppressWarnings("unchecked")

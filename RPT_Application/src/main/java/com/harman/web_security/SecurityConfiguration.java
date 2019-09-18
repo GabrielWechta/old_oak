@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.harman.LoginView;
+import com.harman.database.AuthorityType;
 import com.harman.database.UserDetailsServiceImpl;
 import com.harman.web_service.CustomRequestCache;
 
@@ -59,7 +60,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	            .requestCache().requestCache(new CustomRequestCache()) 
 
 	            // Restrict access to our application.
-	            .and().authorizeRequests()
+	            .and().authorizeRequests().antMatchers("/users").hasAuthority("ROLE_ADMIN")
 
 	            // Allow all flow internal requests.
 	            .requestMatchers(SecurityUtils::isFrameworkInternalRequest).permitAll()

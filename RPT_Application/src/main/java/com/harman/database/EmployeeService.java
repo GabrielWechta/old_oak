@@ -30,6 +30,10 @@ public class EmployeeService {
 	public int count() {
 		return (int) employeeRepository.count();
 	}
+	
+	public Employee findByUsername(String username) {
+		return employeeRepository.findByUsername(username);
+	}
 
 	public void delete(Employee entry) {
 		if (entry == null) {
@@ -61,8 +65,9 @@ public class EmployeeService {
 				"Rene Carlsson", "Elvis Olsen", "Solomon Olsen", "Jaydan Jackson", "Bernard Nilsen" };
 		for (String name : names) {
 			String[] split = name.split(" ");
-			Employee c = new Employee(split[0], passwordEncoder.encode(split[1]));
+			Employee c = new Employee(split[0], passwordEncoder.encode(split[1]), (new Authority(AuthorityType.ROLE_USER)));
 			save(c);
 		}
+		save(new Employee("Gabi", passwordEncoder.encode("1gabi2"), (new Authority(AuthorityType.ROLE_ADMIN))));
 	}
 }

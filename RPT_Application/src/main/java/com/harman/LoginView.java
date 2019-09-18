@@ -34,6 +34,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 		login.setOpened(true);
 		login.setTitle("RPT Application");
 		login.setDescription("Welcome to Harman RPT");
+		login.setForgotPasswordButtonVisible(false);
 
 		getElement().appendChild(login.getElement());
 

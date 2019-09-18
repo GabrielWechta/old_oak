@@ -12,7 +12,7 @@ import com.vaadin.flow.router.RouterLink;
 public class MainView extends VerticalLayout {
 
 	private static final long serialVersionUID = -1757630587061487264L;
-	private RouterLink link, link_2;
+	private RouterLink link_2;
 
 	public MainView() {
 
@@ -23,13 +23,9 @@ public class MainView extends VerticalLayout {
 		grretingStyle.set("display", "block");
 		grretingStyle.set("margin-bottom", "10px");
 
-		link = new RouterLink("to view", ViewComponent.class);
+		//link = new RouterLink("to view", ViewComponent.class);
 		link_2 = new RouterLink("users", EmployeesCRUDView.class);
 
-		Style linkStyle = link.getElement().getStyle();
-		linkStyle.set("display", "block");
-		linkStyle.set("margin-bottom", "10px");
-
-		add(secondheading, greeting, new LogoutButton(), link, link_2);
+		add(secondheading, greeting, new LogoutButton(), link_2);
 	}
 }

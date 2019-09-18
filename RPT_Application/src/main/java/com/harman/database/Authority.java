@@ -12,20 +12,21 @@ import javax.persistence.Table;
 @Table(name = "authority")
 public class Authority {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String id;
 
 	@Enumerated(EnumType.STRING)
-    private AuthorityType name;
-    
-    public Authority() {}
-    
-    public Authority(AuthorityType name) {
-        this.name = name;
-    }
-    
-    public String getId() {
+	private AuthorityType name;
+
+	public Authority() {
+	}
+
+	public Authority(AuthorityType name) {
+		this.name = name;
+	}
+
+	public String getId() {
 		return id;
 	}
 
