@@ -1,4 +1,4 @@
-package com.harman.database;
+package com.harman.user_database;
 
 import java.util.List;
 import java.util.logging.Level;

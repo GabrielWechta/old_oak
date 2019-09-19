@@ -13,8 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.harman.LoginView;
-import com.harman.database.AuthorityType;
-import com.harman.database.UserDetailsServiceImpl;
+import com.harman.user_database.AuthorityType;
+import com.harman.user_database.UserDetailsServiceImpl;
 import com.harman.web_service.CustomRequestCache;
 
 @EnableWebSecurity

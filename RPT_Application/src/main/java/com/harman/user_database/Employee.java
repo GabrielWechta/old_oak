@@ -1,4 +1,4 @@
-package com.harman.database;
+package com.harman.user_database;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -7,8 +7,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.core.GrantedAuthority;
+
+import com.harman.raport_database.Raport;
 
 @Entity
 @Table(name = "employee")
@@ -62,8 +64,11 @@ public class Employee implements Cloneable {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "employee_authority", joinColumns = { @JoinColumn(name = "employee_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "authority_id") })
+	
+//	@ManyToOne
+//	private Set<Raport> raports;
 
-	@Enumerated(EnumType.STRING)
+	//@Enumerated(EnumType.STRING)
 	public Set<Authority> authorities = new HashSet<>();
 
 	@Override
@@ -102,7 +107,6 @@ public class Employee implements Cloneable {
 	public void setAuthority(AuthorityType auth) {
 		this.authority = auth.name();
 	}
-
 	@SuppressWarnings("unchecked")
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return (Collection<? extends GrantedAuthority>) this.authorities;

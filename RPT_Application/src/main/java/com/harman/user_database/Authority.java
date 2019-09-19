@@ -1,4 +1,4 @@
-package com.harman.database;
+package com.harman.user_database;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

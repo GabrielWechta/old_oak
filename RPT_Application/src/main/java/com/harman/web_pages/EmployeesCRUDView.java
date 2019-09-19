@@ -3,10 +3,10 @@ package com.harman.web_pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.harman.database.Authority;
-import com.harman.database.AuthorityType;
-import com.harman.database.Employee;
-import com.harman.database.EmployeeService;
+import com.harman.user_database.Authority;
+import com.harman.user_database.AuthorityType;
+import com.harman.user_database.Employee;
+import com.harman.user_database.EmployeeService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;

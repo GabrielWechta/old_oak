@@ -1,4 +1,4 @@
-package com.harman.database;
+package com.harman.user_database;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
