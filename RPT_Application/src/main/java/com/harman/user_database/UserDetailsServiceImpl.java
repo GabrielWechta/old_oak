@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
 	@Autowired
@@ -32,14 +32,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			throw new UsernameNotFoundException("Employee not found.");
 		}
 
-		return new org.springframework.security.core.userdetails.User(employee.getId(), employee.getPassword(),
-				getAuthority(employee));
-		// (UserDetails)
+		return new org.springframework.security.core.userdetails.User(employee.getId(), employee.getPassword(), getAuthority(employee));
 	}
 
 	private List<SimpleGrantedAuthority> getAuthority(Employee employee) {
-		if(employee.getAuthority().equals("ROLE_USER")) return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
-		else return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		if (employee.getAuthority().equals("ROLE_USER")) {
+			return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+		} else {
+			return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		}
+
 	}
 
 }

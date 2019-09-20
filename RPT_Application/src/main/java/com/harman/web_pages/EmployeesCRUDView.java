@@ -81,7 +81,8 @@ public class EmployeesCRUDView extends VerticalLayout {
 		saveButton.addClickListener(a -> {
 			if (employeeService.findByUsername(usernameTextField.getValue()) != null) {
 				Dialog secDialog = new Dialog();
-				Label secUserLabel = new Label("In database is user with '" + usernameTextField.getValue() + "' username already");
+				Label secUserLabel = new Label(
+						"In database is user with '" + usernameTextField.getValue() + "' username already");
 				secDialog.add(secUserLabel);
 				secDialog.open();
 			} else {

@@ -8,9 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
 @Table(name = "authority")
-public class Authority {
+public class Authority implements GrantedAuthority{
+
+	private static final long serialVersionUID = -6093361139074853428L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +44,10 @@ public class Authority {
 
 	public void setName(AuthorityType name) {
 		this.name = name;
+	}
+	
+	@Override
+	public String getAuthority() {
+		return getName().toString();
 	}
 }

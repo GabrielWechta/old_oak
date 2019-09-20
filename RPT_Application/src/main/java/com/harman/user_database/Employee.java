@@ -1,7 +1,9 @@
 package com.harman.user_database;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,8 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.SecondaryTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -44,6 +45,14 @@ public class Employee implements Cloneable {
 		super();
 	}
 
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "employee_authority", joinColumns = { @JoinColumn(name = "employee_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "authority_id") })
+	public Set<Authority> authorities = new HashSet<>();
+
+	@OneToMany
+	private List<Raport> raports = new ArrayList<>();
+
 	public Employee(String username, String password) {
 		super();
 		this.username = username;
@@ -55,21 +64,13 @@ public class Employee implements Cloneable {
 		this.username = username;
 		this.password = password;
 		this.authorities.add(authority);
-		
-		if(authority.getName().equals(AuthorityType.ROLE_USER)) {
+
+		if (authority.getName().equals(AuthorityType.ROLE_USER)) {
 			this.authority = AuthorityType.ROLE_USER.toString();
-		}else this.authority = AuthorityType.ROLE_ADMIN.toString();
+		} else {
+			this.authority = AuthorityType.ROLE_ADMIN.toString();
+		}
 	}
-
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "employee_authority", joinColumns = { @JoinColumn(name = "employee_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "authority_id") })
-	
-//	@ManyToOne
-//	private Set<Raport> raports;
-
-	//@Enumerated(EnumType.STRING)
-	public Set<Authority> authorities = new HashSet<>();
 
 	@Override
 	public Employee clone() throws CloneNotSupportedException {
@@ -107,7 +108,7 @@ public class Employee implements Cloneable {
 	public void setAuthority(AuthorityType auth) {
 		this.authority = auth.name();
 	}
-	@SuppressWarnings("unchecked")
+
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return (Collection<? extends GrantedAuthority>) this.authorities;
 	}

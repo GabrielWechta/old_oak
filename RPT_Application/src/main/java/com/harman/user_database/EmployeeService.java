@@ -1,6 +1,7 @@
 package com.harman.user_database;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +34,10 @@ public class EmployeeService {
 	
 	public Employee findByUsername(String username) {
 		return employeeRepository.findByUsername(username);
+	}
+	
+	public Optional<Employee> findById(String id) {
+		return employeeRepository.findById(id);
 	}
 
 	public void delete(Employee entry) {
@@ -70,4 +75,5 @@ public class EmployeeService {
 		}
 		save(new Employee("Gabi", passwordEncoder.encode("1gabi2"), (new Authority(AuthorityType.ROLE_ADMIN))));
 	}
+
 }

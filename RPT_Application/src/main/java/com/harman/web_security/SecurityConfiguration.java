@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.harman.LoginView;
-import com.harman.user_database.AuthorityType;
 import com.harman.user_database.UserDetailsServiceImpl;
 import com.harman.web_service.CustomRequestCache;
 
@@ -22,26 +21,25 @@ import com.harman.web_service.CustomRequestCache;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	private static final String LOGIN_FAILURE_URL = "/login?error"; 
+	private static final String LOGIN_FAILURE_URL = "/login?error";
 	private static final String LOGOUT_SUCCESS_URL = "/login";
-	private static final String USERS_URL = "/users";
 
-	 @Override
-	   public void configure(AuthenticationManagerBuilder auth) throws Exception {
-	       auth.userDetailsService(userDetailsService()).passwordEncoder(bCryptPasswordEncoder);
-	   }
-	  
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService()).passwordEncoder(bCryptPasswordEncoder);
+	}
+
 	@Bean
 	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception { 
-	    return super.authenticationManagerBean();
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 
 	@Bean
 	public CustomRequestCache requestCache() {
-	     return new CustomRequestCache();
+		return new CustomRequestCache();
 	}
 
 	@Bean
@@ -49,49 +47,40 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public UserDetailsService userDetailsService() {
 		return new UserDetailsServiceImpl();
 	}
-	 
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	    // Not using Spring CSRF here to be able to use plain HTML for the login page
-	    http.csrf().disable()
+		// Not using Spring CSRF here to be able to use plain HTML for the login page
+		http.csrf().disable()
 
-	            // Register our CustomRequestCache that saves unauthorized access attempts, so
-	            // the user is redirected after login.
-	            .requestCache().requestCache(new CustomRequestCache()) 
+				// Register our CustomRequestCache that saves unauthorized access attempts, so
+				// the user is redirected after login.
+				.requestCache().requestCache(new CustomRequestCache())
 
-	            // Restrict access to our application.
-	            .and().authorizeRequests().antMatchers("/users").hasAuthority("ROLE_ADMIN")
+				// Restrict access to our application.
+				.and().authorizeRequests().antMatchers("/users").hasAuthority("ROLE_ADMIN")
 
-	            // Allow all flow internal requests.
-	            .requestMatchers(SecurityUtils::isFrameworkInternalRequest).permitAll()
+				// Allow all flow internal requests.
+				.requestMatchers(SecurityUtils::isFrameworkInternalRequest).permitAll()
 
-	            // Allow all requests by logged in users.
-	            .anyRequest().authenticated()
+				// Allow all requests by logged in users.
+				.anyRequest().authenticated()
 
-	            // Configure the login page.
-	            .and().formLogin().loginPage("/" + LoginView.ROUTE).usernameParameter("username").passwordParameter("password").permitAll()
-	            .failureUrl(LOGIN_FAILURE_URL)
+				// Configure the login page.
+				.and().formLogin().loginPage("/" + LoginView.ROUTE).usernameParameter("username")
+				.passwordParameter("password").permitAll().failureUrl(LOGIN_FAILURE_URL)
 
-	            // Configure logout
-	            .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL)
-	    
-	            // Allow h2-console
-	    		.and().headers().frameOptions().disable();
+				// Configure logout
+				.and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL)
+
+				// Allow h2-console
+				.and().headers().frameOptions().disable();
 	}
-	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers(
-				"/VAADIN/**",
-				"/favicon.ico",
-				"/robots.txt",
-				"/manifest.webmanifest",
-				"/sw.js",
-				"/offline-page.html",
-				"/frontend/**",
-				"/webjars/**",
-				"/frontend-es5/**",
-				"/frontend-es6/**",
+		web.ignoring().antMatchers("/VAADIN/**", "/favicon.ico", "/robots.txt", "/manifest.webmanifest", "/sw.js",
+				"/offline-page.html", "/frontend/**", "/webjars/**", "/frontend-es5/**", "/frontend-es6/**",
 				"/h2-comsole");
 	}
 }
