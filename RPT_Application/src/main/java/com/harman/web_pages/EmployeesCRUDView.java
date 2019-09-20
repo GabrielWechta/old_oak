@@ -34,7 +34,7 @@ public class EmployeesCRUDView extends VerticalLayout {
 
 		Grid<Employee> grid = new Grid<>(Employee.class);
 		grid.setItems(employeeService.findAll());
-		grid.setColumns("id", "username", "password", "authority");
+		grid.setColumns("id", "username", /* "password", */"raports", "authority");
 
 		grid.getColumnByKey("id").setFlexGrow(0);
 		grid.addComponentColumn(item -> createRemoveButton(grid, item)).setHeader("").setFlexGrow(0);
@@ -86,11 +86,20 @@ public class EmployeesCRUDView extends VerticalLayout {
 				secDialog.add(secUserLabel);
 				secDialog.open();
 			} else {
-				employeeService.save(new Employee(usernameTextField.getValue(),
-						bCryptPasswordEncoder.encode(passwordTextField.getValue()), auth));
-				dialog.close();
-				grid.setItems(employeeService.findAll());
+				if ((passwordTextField.getValue() == null) || (select.getValue() == null)
+						|| (usernameTextField.getValue() == null)) {
+					Dialog secDialog = new Dialog();
+					Label secUserLabel = new Label("All fields must not be empty");
+					secDialog.add(secUserLabel);
+					secDialog.open();
+				} else {
+					employeeService.save(new Employee(usernameTextField.getValue(),
+							bCryptPasswordEncoder.encode(passwordTextField.getValue()), auth));
+					dialog.close();
+					grid.setItems(employeeService.findAll());
+				}
 			}
+
 		});
 
 		dialog.add(usernameTextField, passwordTextField, select, saveButton);

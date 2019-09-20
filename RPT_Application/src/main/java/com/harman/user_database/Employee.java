@@ -22,7 +22,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.harman.raport_database.Raport;
+import com.harman.report_database.Report;
 
 @Entity
 @Table(name = "employee")
@@ -41,17 +41,17 @@ public class Employee implements Cloneable {
 
 	private String authority;
 
-	public Employee() {
-		super();
-	}
-
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "employee_authority", joinColumns = { @JoinColumn(name = "employee_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "authority_id") })
 	public Set<Authority> authorities = new HashSet<>();
 
-	@OneToMany
-	private List<Raport> raports = new ArrayList<>();
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Report> raports = new ArrayList<>();
+
+	public Employee() {
+		super();
+	}
 
 	public Employee(String username, String password) {
 		super();
@@ -64,6 +64,20 @@ public class Employee implements Cloneable {
 		this.username = username;
 		this.password = password;
 		this.authorities.add(authority);
+
+		if (authority.getName().equals(AuthorityType.ROLE_USER)) {
+			this.authority = AuthorityType.ROLE_USER.toString();
+		} else {
+			this.authority = AuthorityType.ROLE_ADMIN.toString();
+		}
+	}
+
+	public Employee(@NotEmpty String username, @NotEmpty String password, Authority authority, List<Report> raports) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.authorities.add(authority);
+		this.raports = raports;
 
 		if (authority.getName().equals(AuthorityType.ROLE_USER)) {
 			this.authority = AuthorityType.ROLE_USER.toString();
@@ -111,5 +125,13 @@ public class Employee implements Cloneable {
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return (Collection<? extends GrantedAuthority>) this.authorities;
+	}
+
+	public List<Report> getRaports() {
+		return raports;
+	}
+
+	public void setRaports(List<Report> raports) {
+		this.raports = raports;
 	}
 }

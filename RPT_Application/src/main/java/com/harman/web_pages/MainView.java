@@ -3,7 +3,6 @@ package com.harman.web_pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.harman.user_database.EmployeeService;
 import com.harman.utils.LogoutButton;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
@@ -17,9 +16,6 @@ public class MainView extends VerticalLayout {
 
 	private static final long serialVersionUID = -1757630587061487264L;
 	private RouterLink link_2;
-	
-	@Autowired
-	private EmployeeService employeeService;
 
 	@Autowired
 	public MainView() {
@@ -31,7 +27,6 @@ public class MainView extends VerticalLayout {
 		grretingStyle.set("display", "block");
 		grretingStyle.set("margin-bottom", "10px");
 
-		// link = new RouterLink("to view", ViewComponent.class);
 		link_2 = new RouterLink("users", EmployeesCRUDView.class);
 		
 

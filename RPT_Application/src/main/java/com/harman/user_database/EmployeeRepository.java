@@ -11,7 +11,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 	Optional<Employee> findById(String id);
 
 	List<Employee> findAll();
-	
-
-
 }

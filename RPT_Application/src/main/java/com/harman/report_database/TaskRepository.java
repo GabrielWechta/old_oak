@@ -1,9 +1,9 @@
-package com.harman.raport_database;
+package com.harman.report_database;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RaportRepository extends JpaRepository<Raport, Long> {
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
 }

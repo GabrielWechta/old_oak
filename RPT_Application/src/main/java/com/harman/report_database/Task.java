@@ -1,4 +1,4 @@
-package com.harman.raport_database;
+package com.harman.report_database;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
