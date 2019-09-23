@@ -19,10 +19,10 @@ public class MainView extends VerticalLayout {
 
 	@Autowired
 	public MainView() {
-		String userPrincipalId = SecurityContextHolder.getContext().getAuthentication().getName();
+		String userPrincipalName = SecurityContextHolder.getContext().getAuthentication().getName();
 		H1 secondheading = new H1("RPT Project Main View");
 
-		Label greeting = new Label("Hello " + userPrincipalId);
+		Label greeting = new Label("Hello " + userPrincipalName);
 		Style grretingStyle = greeting.getElement().getStyle();
 		grretingStyle.set("display", "block");
 		grretingStyle.set("margin-bottom", "10px");

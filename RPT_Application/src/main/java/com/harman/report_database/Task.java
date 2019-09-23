@@ -1,8 +1,11 @@
 package com.harman.report_database;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,9 +21,9 @@ public class Task {
 	private String placement; // enum?
 	private String description;
 
-//	@ManyToOne
-//	@JoinColumn(name = "RAPORT_ID")
-//	private Raport raport;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn
+	private Report report;
 
 	public Task() {
 	}
@@ -72,4 +75,13 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Report getReport() {
+		return report;
+	}
+
+	public void setReport(Report report) {
+		this.report = report;
+	}
+	
 }

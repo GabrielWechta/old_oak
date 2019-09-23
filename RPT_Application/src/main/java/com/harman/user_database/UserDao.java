@@ -1,5 +1,6 @@
 package com.harman.user_database;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,11 @@ public class UserDao implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return employee.getAuthorities().stream().map(authority -> new SimpleGrantedAuthority(authority.toString()))
-				.collect(Collectors.toList());
+		if (employee.getAuthority().equals("ROLE_USER")) {
+			return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+		} else {
+			return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		}
 	}
 
 	public String getId() {

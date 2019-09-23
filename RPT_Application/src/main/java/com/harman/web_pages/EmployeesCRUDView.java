@@ -34,7 +34,7 @@ public class EmployeesCRUDView extends VerticalLayout {
 
 		Grid<Employee> grid = new Grid<>(Employee.class);
 		grid.setItems(employeeService.findAll());
-		grid.setColumns("id", "username", /* "password", */"raports", "authority");
+		grid.setColumns("id", "username", /* "password", */"reports", "authority");
 
 		grid.getColumnByKey("id").setFlexGrow(0);
 		grid.addComponentColumn(item -> createRemoveButton(grid, item)).setHeader("").setFlexGrow(0);

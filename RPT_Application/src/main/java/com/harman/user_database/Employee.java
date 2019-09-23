@@ -47,7 +47,7 @@ public class Employee implements Cloneable {
 	public Set<Authority> authorities = new HashSet<>();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Report> raports = new ArrayList<>();
+	private List<Report> reports = new ArrayList<>();
 
 	public Employee() {
 		super();
@@ -72,12 +72,12 @@ public class Employee implements Cloneable {
 		}
 	}
 
-	public Employee(@NotEmpty String username, @NotEmpty String password, Authority authority, List<Report> raports) {
+	public Employee(@NotEmpty String username, @NotEmpty String password, Authority authority, List<Report> reports) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.authorities.add(authority);
-		this.raports = raports;
+		this.reports = reports;
 
 		if (authority.getName().equals(AuthorityType.ROLE_USER)) {
 			this.authority = AuthorityType.ROLE_USER.toString();
@@ -127,11 +127,15 @@ public class Employee implements Cloneable {
 		return (Collection<? extends GrantedAuthority>) this.authorities;
 	}
 
-	public List<Report> getRaports() {
-		return raports;
+	public List<Report> getReports() {
+		return reports;
 	}
 
-	public void setRaports(List<Report> raports) {
-		this.raports = raports;
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
+
+	public void addReport(Report report1) {
+		this.reports.add(report1);
 	}
 }

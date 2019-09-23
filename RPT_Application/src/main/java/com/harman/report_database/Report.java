@@ -1,6 +1,7 @@
 package com.harman.report_database;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,21 +18,20 @@ import javax.persistence.Table;
 import com.harman.user_database.Employee;
 
 @Entity
-@Table(name = "raport")
+@Table(name = "report")
 public class Report {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
+	private String date;
+	private String employeeUsername;
+	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Task> tasks = new ArrayList<Task>();
 
 	@ManyToOne
 	private Employee employee;
-
-	@Column
-	private String employeeUsername;
-
+	
 	public Report() {
 	}
 
@@ -61,10 +61,23 @@ public class Report {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+		this.setEmployeeUsername(this.employee.getUsername());
+	}
+	
+	public void addTask(Task task) {
+		this.tasks.add(task);
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public String getEmployeeUsername() {
-		return employee.getUsername();
+		return employeeUsername;
 	}
 
 	public void setEmployeeUsername(String employeeUsername) {

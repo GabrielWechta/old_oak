@@ -44,8 +44,13 @@ public class EmployeeService {
 		return employeeRepository.findByUsername(username);
 	}
 
-	public Optional<Employee> findById(String id) {
-		return employeeRepository.findById(id);
+	public Employee findById(String id) {
+		if (employeeRepository.findById(id).isPresent()) {
+			return employeeRepository.findById(id).get();
+		} else {
+			return new Employee("Error employee, your account has been deleted while using app", "mistakeshavebeenamde",
+					new Authority(AuthorityType.ROLE_USER));
+		}
 	}
 
 	public void delete(Employee entry) {
@@ -80,29 +85,29 @@ public class EmployeeService {
 		Long index = 1L;
 		for (String name : names) {
 			String[] split = name.split(" ");
-
-			Task task = new Task("type1", "name " + index, "placement", "description");
-			List<Task> taskList = new ArrayList<>();
-			taskList.add(task);
-			index++;
-			Task task2 = new Task("type1", "name " + index, "placement", "description");
-			Report raport = new Report(taskList);
-			List<Task> taskList2 = new ArrayList<>();
-			taskList2.add(task2);
-			Report raport2 = new Report(taskList2);
-
-			List<Report> raportList = new ArrayList<>();
-			raportList.add(raport);
-			raportList.add(raport2);
+//
+//			Task task = new Task("type1", "name " + index, "placement", "description");
+//			List<Task> taskList = new ArrayList<>();
+//			taskList.add(task);
+//			index++;
+//			Task task2 = new Task("type1", "name " + index, "placement", "description");
+//			Report raport = new Report(taskList);
+//			List<Task> taskList2 = new ArrayList<>();
+//			taskList2.add(task2);
+//			Report raport2 = new Report(taskList2);
+//
+//			List<Report> raportList = new ArrayList<>();
+//			raportList.add(raport);
+//			raportList.add(raport2);
 
 			index++;
 			Employee c = new Employee(split[0], passwordEncoder.encode(split[1]),
 					(new Authority(AuthorityType.ROLE_USER)));
 			save(c);
-			raport.setEmployee(c);
-			raport2.setEmployee(c);
-			raportService.save(raport);
-			raportService.save(raport2);
+//			raport.setEmployee(c);
+//			raport2.setEmployee(c);
+//			raportService.save(raport);
+//			raportService.save(raport2);
 		}
 		save(new Employee("Gabi", passwordEncoder.encode("1gabi2"), (new Authority(AuthorityType.ROLE_ADMIN))));
 	}
