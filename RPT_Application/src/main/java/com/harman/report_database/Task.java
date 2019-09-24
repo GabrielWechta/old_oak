@@ -3,6 +3,7 @@ package com.harman.report_database;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,13 +14,14 @@ import javax.persistence.Table;
 public class Task {
 
 	@Id
-	@GeneratedValue // (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String type; // enum?
 	private String name;
 	private String placement; // enum?
 	private String description;
+	private WwbType wwbType;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
@@ -28,12 +30,23 @@ public class Task {
 	public Task() {
 	}
 
-	public Task(String type, String name, String placement, String description) {
+	public Task(String type, String name, String placement, String description, String wwbTypeString) {
 		super();
 		this.type = type;
 		this.name = name;
 		this.placement = placement;
 		this.description = description;
+		
+		switch(wwbTypeString) {
+			case "Feauture": this.wwbType = WwbType.FEAUTURE;
+				break;
+			case "Bug": this.wwbType = WwbType.BUG;
+				break;
+			case "Refactor": this.wwbType = WwbType.REFACTOR;
+				break;
+			default:
+				this.wwbType = WwbType.FEAUTURE;
+		}
 	}
 
 	public long getId() {
@@ -83,5 +96,12 @@ public class Task {
 	public void setReport(Report report) {
 		this.report = report;
 	}
-	
+
+	public WwbType getWwbType() {
+		return wwbType;
+	}
+
+	public void setWwbType(WwbType wwbType) {
+		this.wwbType = wwbType;
+	}
 }

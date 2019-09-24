@@ -4,18 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.harman.utils.LogoutButton;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouterLink;
 
 @Route
 public class MainView extends VerticalLayout {
 
 	private static final long serialVersionUID = -1757630587061487264L;
-	private RouterLink link_2;
 
 	@Autowired
 	public MainView() {
@@ -27,9 +28,13 @@ public class MainView extends VerticalLayout {
 		grretingStyle.set("display", "block");
 		grretingStyle.set("margin-bottom", "10px");
 
-		link_2 = new RouterLink("users", EmployeesCRUDView.class);
-		
+		Anchor anchor = new Anchor("/users", "users");
+		Button move = new Button("Move");
+		move.addClickListener((__) -> {
+			UI.getCurrent().navigate("users");
+			// UI.getCurrent().
+		});
 
-		add(secondheading, greeting, new LogoutButton(), link_2);
+		add(secondheading, greeting, new LogoutButton(), anchor, move);
 	}
 }

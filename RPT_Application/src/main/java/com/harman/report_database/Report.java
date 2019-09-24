@@ -1,11 +1,10 @@
 package com.harman.report_database;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,15 +22,15 @@ public class Report {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String date;
+	private LocalDate date;
 	private String employeeUsername;
-	
+
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Task> tasks = new ArrayList<Task>();
 
 	@ManyToOne
 	private Employee employee;
-	
+
 	public Report() {
 	}
 
@@ -47,8 +46,13 @@ public class Report {
 		this.id = id;
 	}
 
-	public List<Task> getTasks() {
-		return tasks;
+	public String getTasks() {
+		String taskRepresentation = "";
+		for (Task t : this.tasks) {
+			taskRepresentation += ("(" + Long.toString(t.getId()) + " : ");
+			taskRepresentation += (t.getWwbType().toString() + ") | ");
+		}
+		return taskRepresentation;
 	}
 
 	public void setTasks(List<Task> tasks) {
@@ -63,16 +67,16 @@ public class Report {
 		this.employee = employee;
 		this.setEmployeeUsername(this.employee.getUsername());
 	}
-	
+
 	public void addTask(Task task) {
 		this.tasks.add(task);
 	}
 
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

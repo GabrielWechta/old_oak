@@ -1,8 +1,6 @@
 package com.harman.user_database;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,18 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.harman.report_database.Report;
-import com.harman.report_database.ReportService;
-import com.harman.report_database.Task;
-
 @Service
 public class EmployeeService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
-
-	@Autowired
-	private ReportService raportService;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -44,23 +35,23 @@ public class EmployeeService {
 	}
 
 	public Employee findById(String id) {
-			return employeeRepository.findById(id).orElse(null);
+		return employeeRepository.findById(id).orElse(null);
 	}
 
-	public void delete(Employee entry) {
-		if (entry == null) {
+	public void delete(Employee employee) {
+		if (employee == null) {
 			LOGGER.log(Level.SEVERE, "Employee is null. Check why do you delete null Employee.");
 			return;
 		}
-		employeeRepository.delete(entry);
+		employeeRepository.delete(employee);
 	}
 
-	public void save(Employee entry) {
-		if (entry == null) {
+	public void save(Employee employee) {
+		if (employee == null) {
 			LOGGER.log(Level.SEVERE, "Employee is null. And that's bad. Check why do you save null Employee.");
 			return;
 		}
-		employeeRepository.save(entry);
+		employeeRepository.save(employee);
 	}
 
 	public void ensureTestData() {

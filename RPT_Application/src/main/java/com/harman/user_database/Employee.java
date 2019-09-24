@@ -10,8 +10,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -140,8 +138,13 @@ public class Employee implements Cloneable {
 		return (Collection<? extends GrantedAuthority>) this.authorities;
 	}
 
-	public List<Report> getReports() {
-		return reports;
+	public String getReports() {
+		String reportsRepresenantion = "";
+		for (Report r : this.reports) {
+			reportsRepresenantion += ("(" + Long.toString(r.getId()) + " : ");
+			reportsRepresenantion += (r.getDate() + ") | ");
+		}
+		return reportsRepresenantion;
 	}
 
 	public void setReports(List<Report> reports) {

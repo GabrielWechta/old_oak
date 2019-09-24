@@ -1,7 +1,5 @@
 package com.harman.web_pages;
 
-import java.awt.Label;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -12,16 +10,17 @@ import com.harman.user_database.Employee;
 import com.harman.user_database.EmployeeService;
 import com.harman.user_database.UserDao;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.ItemDoubleClickEvent;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.UIScope;
 
@@ -32,22 +31,22 @@ public class ReportCRUDView extends VerticalLayout {
 	private static final long serialVersionUID = 2179544351434704188L;
 	@Autowired
 	ReportService reportService;
-	
+
 	@Autowired
 	EmployeeService employeeService;
 
 	@Autowired
 	public ReportCRUDView(ReportService reportService, EmployeeService employeeService) {
-		
+
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
+
 		if (principal instanceof UserDao) {
 			Grid<Report> grid = new Grid<>(Report.class);
-			
+
 			Employee employee;
 			employee = ((UserDao) principal).getUserDetails();
 			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
-			
+
 			grid.setColumns("id", "date", "tasks");
 
 			grid.getColumnByKey("id").setFlexGrow(0);
@@ -61,14 +60,14 @@ public class ReportCRUDView extends VerticalLayout {
 			setSizeFull();
 			add(addButton, grid);
 
-		}
-		else add(new H3 ("error, you are nolonger logged"));	
+		} else
+			add(new H3("error, you are no longer logged"));
 	}
 
 	private void createTaskDialog(Grid<Report> grid, ItemDoubleClickEvent<Report> e, Employee employee) {
 		Dialog dialog = new Dialog();
 		FormLayout formLayout = new FormLayout();
-	
+
 		dialog.setHeightFull();
 		dialog.setWidth("750px");
 
@@ -80,28 +79,38 @@ public class ReportCRUDView extends VerticalLayout {
 		taskTextArea.setSizeFull();
 		TextArea descriptionTextArea = new TextArea("Description");
 		taskTextArea.setSizeFull();
-		
+
 		ListBox<String> listBox = new ListBox<>();
 		listBox.setItems("Feature", "Bug", "Refactor");
 		listBox.prependComponents("Feature", new H3("WWB"));
-		
+
 		Button saveButton = new Button("Add");
 		saveButton.addClickListener(a -> {
-			Task task = new Task(taskTextArea.getValue(), nameTextArea.getValue(), placementTextArea.getValue(), descriptionTextArea.getValue());
-			//listbox enum?
-			//sprawdzanie nulli
-			Report report = reportService.findById(e.getItem().getId());
-			task.setReport(report);
-			report.addTask(task);
-			
-			employee.addReport(report);
-			reportService.save(report);
-			//employeeService.save(employee);
-			
-			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
-			dialog.close();
+			if ((taskTextArea.getValue() == "") || (nameTextArea.getValue() == "")
+					|| (placementTextArea.getValue() == "") || (descriptionTextArea.getValue() == "")
+					|| (listBox.getValue() == null)) {
+				Dialog secDialog = new Dialog();
+				Label secUserLabel = new Label("All fields must not be empty");
+				secDialog.add(secUserLabel);
+				secDialog.open();
+			} else {
+				Task task = new Task(taskTextArea.getValue(), nameTextArea.getValue(), placementTextArea.getValue(),
+						descriptionTextArea.getValue(), listBox.getValue());
+				// listbox enum?
+				// sprawdzanie nulli
+				Report report = reportService.findById(e.getItem().getId());
+				task.setReport(report);
+				report.addTask(task);
+
+				employee.addReport(report);
+				reportService.save(report);
+
+				grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
+				dialog.close();
+
+			}
 		});
-		
+
 		formLayout.add(taskTextArea, nameTextArea, placementTextArea, descriptionTextArea, listBox, saveButton);
 		dialog.add(formLayout);
 		dialog.open();
@@ -110,23 +119,23 @@ public class ReportCRUDView extends VerticalLayout {
 	private void createSaveDialog(Grid<Report> grid, Employee employee) {
 		Dialog dialog = new Dialog();
 
-		TextField dateTextField = new TextField();
-		dateTextField.setPlaceholder("Date");
+		DatePicker datePicker = new DatePicker();
+		datePicker.setPlaceholder("Choose date");
 
 		Button saveButton = new Button("Save");
 		saveButton.addClickListener(a -> {
 			Report report = new Report();
-			report.setDate(dateTextField.getValue());
+			report.setDate(datePicker.getValue());
 			report.setEmployee(employee);
 			employee.addReport(report);
 			reportService.save(report);
-			//employeeService.save(employee);
-			
+			// employeeService.save(employee);
+
 			dialog.close();
 			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
 		});
 
-		dialog.add(dateTextField, saveButton);
+		dialog.add(datePicker, saveButton);
 		dialog.open();
 	}
 

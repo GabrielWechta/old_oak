@@ -2,11 +2,14 @@ package com.harman.web_service;
 
 import org.springframework.stereotype.Component;
 
+import com.harman.LoginView;
+import com.harman.web_security.SecurityUtils;
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.NotFoundException;
 import com.vaadin.flow.server.ServiceInitEvent;
 import com.vaadin.flow.server.VaadinServiceInitListener;
 
-//NIE WIEM CZY TA KLASA JEST DO CZEGOKOLWIEK UZYWANA, SPRAWDZALEM JAK PROGRAM DZIALA Z NIA I BEZ NIEJ I NIE WIEDZE ROZNIC
 @Component
 public class ConfigureUIServiceInitListener implements VaadinServiceInitListener { //
 
@@ -16,6 +19,17 @@ public class ConfigureUIServiceInitListener implements VaadinServiceInitListener
 	public void serviceInit(ServiceInitEvent event) {
 		event.getSource().addUIInitListener(uiEvent -> {
 			final UI ui = uiEvent.getUI();
+			ui.addBeforeEnterListener(this::beforeEnter);
 		});
+	}
+
+	private void beforeEnter(BeforeEnterEvent event) {
+		if (!SecurityUtils.isAccessGranted(event.getNavigationTarget())) {
+			if (SecurityUtils.isUserLoggedIn()) {
+				event.rerouteToError(NotFoundException.class);
+			} else {
+				event.rerouteTo(LoginView.class);
+			}
+		}
 	}
 }

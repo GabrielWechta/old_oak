@@ -34,7 +34,7 @@ public class EmployeesCRUDView extends VerticalLayout {
 
 		Grid<Employee> grid = new Grid<>(Employee.class);
 		grid.setItems(employeeService.findAll());
-		grid.setColumns("id", "username", /* "password", */"reports", "authority");
+		grid.setColumns("id", "username", "reports", "authority");
 
 		grid.getColumnByKey("id").setFlexGrow(0);
 		grid.addComponentColumn(item -> createRemoveButton(grid, item)).setHeader("").setFlexGrow(0);
@@ -50,8 +50,14 @@ public class EmployeesCRUDView extends VerticalLayout {
 
 	private Button createRemoveButton(Grid<Employee> grid, Employee item) {
 		Button button = new Button("Remove", clickEvent -> {
-			employeeService.delete(item);
-			grid.setItems(employeeService.findAll());
+			if(item.getAuthority() == AuthorityType.ROLE_USER.toString()) {
+				employeeService.delete(item);
+				grid.setItems(employeeService.findAll());
+			} else {
+				Dialog dialog = new Dialog();
+				dialog.add(new Label("You can not remove admin user."));
+				dialog.open();
+			}
 		});
 		return button;
 	}
