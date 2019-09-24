@@ -119,7 +119,8 @@ public class ReportCRUDView extends VerticalLayout {
 			report.setDate(dateTextField.getValue());
 			report.setEmployee(employee);
 			employee.addReport(report);
-			employeeService.save(employee);
+			reportService.save(report);
+			//employeeService.save(employee);
 			
 			dialog.close();
 			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));

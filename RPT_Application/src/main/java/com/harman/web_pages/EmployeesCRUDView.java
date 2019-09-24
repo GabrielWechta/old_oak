@@ -60,6 +60,9 @@ public class EmployeesCRUDView extends VerticalLayout {
 		Dialog dialog = new Dialog();
 		Authority auth = new Authority();
 
+		TextField idTextField = new TextField();
+		idTextField.setPlaceholder("id");
+
 		TextField usernameTextField = new TextField();
 		usernameTextField.setPlaceholder("Username");
 
@@ -85,24 +88,27 @@ public class EmployeesCRUDView extends VerticalLayout {
 						"In database is user with '" + usernameTextField.getValue() + "' username already");
 				secDialog.add(secUserLabel);
 				secDialog.open();
+			} else if (employeeService.findById(idTextField.getValue()) != null) {
+				Dialog secDialog = new Dialog();
+				Label secUserLabel = new Label(
+						"In database is user with '" + idTextField.getValue() + "' id already");
+				secDialog.add(secUserLabel);
+				secDialog.open();
+			} else if ((passwordTextField.getValue() == null) || (select.getValue() == null)
+					|| (usernameTextField.getValue() == null)) {
+				Dialog secDialog = new Dialog();
+				Label secUserLabel = new Label("All fields must not be empty");
+				secDialog.add(secUserLabel);
+				secDialog.open();
 			} else {
-				if ((passwordTextField.getValue() == null) || (select.getValue() == null)
-						|| (usernameTextField.getValue() == null)) {
-					Dialog secDialog = new Dialog();
-					Label secUserLabel = new Label("All fields must not be empty");
-					secDialog.add(secUserLabel);
-					secDialog.open();
-				} else {
-					employeeService.save(new Employee(usernameTextField.getValue(),
-							bCryptPasswordEncoder.encode(passwordTextField.getValue()), auth));
-					dialog.close();
-					grid.setItems(employeeService.findAll());
-				}
+				employeeService.save(new Employee(idTextField.getValue(), usernameTextField.getValue(),
+						bCryptPasswordEncoder.encode(passwordTextField.getValue()), auth));
+				dialog.close();
+				grid.setItems(employeeService.findAll());
 			}
-
 		});
 
-		dialog.add(usernameTextField, passwordTextField, select, saveButton);
+		dialog.add(idTextField, usernameTextField, passwordTextField, select, saveButton);
 		dialog.open();
 	}
 }

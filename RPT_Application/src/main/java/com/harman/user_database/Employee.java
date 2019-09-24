@@ -29,7 +29,6 @@ import com.harman.report_database.Report;
 public class Employee implements Cloneable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 
 	@NotEmpty
@@ -46,7 +45,7 @@ public class Employee implements Cloneable {
 			@JoinColumn(name = "authority_id") })
 	public Set<Authority> authorities = new HashSet<>();
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "employee")
 	private List<Report> reports = new ArrayList<>();
 
 	public Employee() {
@@ -71,13 +70,27 @@ public class Employee implements Cloneable {
 			this.authority = AuthorityType.ROLE_ADMIN.toString();
 		}
 	}
+//
+//	public Employee(@NotEmpty String username, @NotEmpty String password, Authority authority, List<Report> reports) {
+//		super();
+//		this.username = username;
+//		this.password = password;
+//		this.authorities.add(authority);
+//		this.reports = reports;
+//
+//		if (authority.getName().equals(AuthorityType.ROLE_USER)) {
+//			this.authority = AuthorityType.ROLE_USER.toString();
+//		} else {
+//			this.authority = AuthorityType.ROLE_ADMIN.toString();
+//		}
+//	}
 
-	public Employee(@NotEmpty String username, @NotEmpty String password, Authority authority, List<Report> reports) {
+	public Employee(String id, @NotEmpty String username, @NotEmpty String password, Authority authority) {
 		super();
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.authorities.add(authority);
-		this.reports = reports;
 
 		if (authority.getName().equals(AuthorityType.ROLE_USER)) {
 			this.authority = AuthorityType.ROLE_USER.toString();
@@ -135,7 +148,7 @@ public class Employee implements Cloneable {
 		this.reports = reports;
 	}
 
-	public void addReport(Report report1) {
-		this.reports.add(report1);
+	public void addReport(Report report) {
+		this.reports.add(report);
 	}
 }
