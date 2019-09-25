@@ -38,12 +38,17 @@ public class EmployeeService {
 		return employeeRepository.findById(id).orElse(null);
 	}
 
-	public void delete(Employee employee) {
+	public boolean delete(Employee employee) { //false - employee wasn't deleted, true - employee was deleted
 		if (employee == null) {
 			LOGGER.log(Level.SEVERE, "Employee is null. Check why do you delete null Employee.");
-			return;
+			return false;
+		}
+		if (employee.getAuthority() == "ROLE_ADMIN") {
+			LOGGER.log(Level.SEVERE, "Employee is admin. No one is allowed to remove admin.");
+			return false;
 		}
 		employeeRepository.delete(employee);
+		return true;
 	}
 
 	public void save(Employee employee) {

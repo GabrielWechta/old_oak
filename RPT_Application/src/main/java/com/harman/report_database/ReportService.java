@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.harman.user_database.Employee;
 import com.harman.user_database.EmployeeService;
 
 @Service
@@ -38,6 +39,15 @@ public class ReportService {
 
 	public List<Report> findByEmployeeUsername(String username) {
 		return reportRepository.findByEmployeeUsername(username);
+	}
+	
+	public void delete(Report report) {
+		if (report == null) {
+			LOGGER.log(Level.SEVERE, "Report is null. Check why do you delete null report.");
+			return;
+		}
+		LOGGER.log(Level.SEVERE, "WSZEDLEM");
+		reportRepository.delete(report);
 	}
 
 }

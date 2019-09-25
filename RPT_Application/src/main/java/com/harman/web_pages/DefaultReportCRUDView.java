@@ -10,7 +10,6 @@ import com.harman.user_database.Employee;
 import com.harman.user_database.EmployeeService;
 import com.harman.user_database.UserDao;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -18,15 +17,13 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.ItemDoubleClickEvent;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
-import com.vaadin.flow.router.Route;
-import com.vaadin.flow.spring.annotation.UIScope;
 
-@Route("reports")
-@UIScope
-public class ReportCRUDView extends VerticalLayout {
+public class DefaultReportCRUDView extends VerticalLayout {
 
 	private static final long serialVersionUID = 2179544351434704188L;
 	@Autowired
@@ -35,30 +32,35 @@ public class ReportCRUDView extends VerticalLayout {
 	@Autowired
 	EmployeeService employeeService;
 
+	private Grid<Report> grid;
+	private Employee employee;
+
 	@Autowired
-	public ReportCRUDView(ReportService reportService, EmployeeService employeeService) {
+	public DefaultReportCRUDView(ReportService reportService, EmployeeService employeeService) {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDao) {
-			Grid<Report> grid = new Grid<>(Report.class);
+			grid = new Grid<>(Report.class);
 
-			Employee employee;
 			employee = ((UserDao) principal).getUserDetails();
 			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
 
-			grid.setColumns("id", "date", "tasks");
+			grid.setColumns("id", "date", "wwb");
 
+			grid.getColumnByKey("id").setHeader("rep_id");
 			grid.getColumnByKey("id").setFlexGrow(0);
-
+			
+			Icon icon = new Icon(VaadinIcon.DOWNLOAD);
+			icon.setColor("orange");
+			grid.addComponentColumn((__) -> {return icon;}).setHeader("Download").setFlexGrow(0).setKey("Download");
+			
 			grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COLUMN_BORDERS);
 
-			Button addButton = new Button("Add Report");
-			addButton.addClickListener(e -> createSaveDialog(grid, employee));
 			grid.addItemDoubleClickListener(e -> createTaskDialog(grid, e, employee));
 
 			setSizeFull();
-			add(addButton, grid);
+			add(grid);
 
 		} else
 			add(new H3("error, you are no longer logged"));
@@ -96,15 +98,13 @@ public class ReportCRUDView extends VerticalLayout {
 			} else {
 				Task task = new Task(taskTextArea.getValue(), nameTextArea.getValue(), placementTextArea.getValue(),
 						descriptionTextArea.getValue(), listBox.getValue());
-				// listbox enum?
-				// sprawdzanie nulli
 				Report report = reportService.findById(e.getItem().getId());
 				task.setReport(report);
 				report.addTask(task);
 
 				employee.addReport(report);
 				reportService.save(report);
-
+				//grid.getColumnByKey("Download").
 				grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
 				dialog.close();
 
@@ -116,27 +116,19 @@ public class ReportCRUDView extends VerticalLayout {
 		dialog.open();
 	}
 
-	private void createSaveDialog(Grid<Report> grid, Employee employee) {
-		Dialog dialog = new Dialog();
-
-		DatePicker datePicker = new DatePicker();
-		datePicker.setPlaceholder("Choose date");
-
-		Button saveButton = new Button("Save");
-		saveButton.addClickListener(a -> {
-			Report report = new Report();
-			report.setDate(datePicker.getValue());
-			report.setEmployee(employee);
-			employee.addReport(report);
-			reportService.save(report);
-			// employeeService.save(employee);
-
-			dialog.close();
-			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
-		});
-
-		dialog.add(datePicker, saveButton);
-		dialog.open();
+	public Grid<Report> getGrid() {
+		return grid;
 	}
 
+	public void setGrid(Grid<Report> grid) {
+		this.grid = grid;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 }

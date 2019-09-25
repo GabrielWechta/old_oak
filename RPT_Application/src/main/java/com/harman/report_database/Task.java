@@ -36,16 +36,19 @@ public class Task {
 		this.name = name;
 		this.placement = placement;
 		this.description = description;
-		
-		switch(wwbTypeString) {
-			case "Feauture": this.wwbType = WwbType.FEAUTURE;
-				break;
-			case "Bug": this.wwbType = WwbType.BUG;
-				break;
-			case "Refactor": this.wwbType = WwbType.REFACTOR;
-				break;
-			default:
-				this.wwbType = WwbType.FEAUTURE;
+
+		switch (wwbTypeString) {
+		case "Feauture":
+			this.wwbType = WwbType.FEAUTURE;
+			break;
+		case "Bug":
+			this.wwbType = WwbType.BUG;
+			break;
+		case "Refactor":
+			this.wwbType = WwbType.REFACTOR;
+			break;
+		default:
+			this.wwbType = WwbType.FEAUTURE;
 		}
 	}
 
