@@ -20,7 +20,6 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -40,6 +39,8 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 	@Autowired
 	TaskService taskService;
 
+	private H3 wwbH3;
+
 	public UserReportCRUDView(ReportService reportService, EmployeeService employeeService) {
 		super(reportService, employeeService);
 
@@ -56,6 +57,8 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 	private void taskDialog(Grid<Report> grid, ItemDoubleClickEvent<Report> e, Employee employee) {
 		Dialog dialog = new Dialog();
 		HorizontalLayout layout = new HorizontalLayout();
+		FormLayout buttomLayout = new FormLayout();
+
 		layout.setJustifyContentMode(JustifyContentMode.BETWEEN);
 		layout.add(new Label("Month: " + e.getItem().getDate()));
 		Icon exitIcon = new Icon(VaadinIcon.CLOSE);
@@ -63,16 +66,21 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 		exitIcon.setColor("red");
 		exitIcon.addClickListener((__) -> dialog.close());
 		layout.add(exitIcon);
-		
+
 		Button addTaskButton = new Button("Add Task");
 		addTaskButton.setHeight("75px");
 		addTaskButton.setWidth("250px");
-		
-		addTaskButton.addClickListener(event -> createTask(TaskCRUDView.getGrid(), e.getItem(), employee));
-		TextArea wwbTextArea = new TextArea();
-		wwbTextArea.setValue("WWB: " + e.getItem().getWwb());
+
+		addTaskButton.addClickListener(event -> {
+			createTask(TaskCRUDView.getGrid(), e.getItem(), employee);
+		});
+
+		wwbH3 = new H3();
+		wwbH3.setText("WWB: " + e.getItem().getWwb());
+		buttomLayout.add(addTaskButton, wwbH3);
+
 		TaskCRUDView taskCRUDView = new TaskCRUDView(taskService, e.getItem());
-		dialog.add(layout, taskCRUDView, addTaskButton, wwbTextArea);
+		dialog.add(layout, taskCRUDView, buttomLayout);// , addTaskButton, wwbTextArea);
 		taskCRUDView.setHeight("500px");
 		dialog.setHeight("600px");
 		dialog.setWidth("1000px");
@@ -142,7 +150,7 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 
 				grid.setItems(taskService.findByReport(report));
 				super.getGrid().setItems(reportService.findByEmployeeUsername(employee.getUsername()));
-				
+				getWwbH3().setText("WWB: " + report.getWwb());
 				dialog.close();
 			}
 		});
@@ -150,6 +158,14 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 		formLayout.add(typeTextArea, nameTextArea, placementTextArea, descriptionTextArea, listBox, saveButton);
 		dialog.add(formLayout);
 		dialog.open();
+	}
+
+	public H3 getWwbH3() {
+		return wwbH3;
+	}
+
+	public void setWwbH3(H3 wwbH3) {
+		this.wwbH3 = wwbH3;
 	}
 
 }
