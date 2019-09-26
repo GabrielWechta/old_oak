@@ -27,10 +27,10 @@ public class Report {
 	private String employeeUsername;
 	private String wwb;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "report")
 	private List<Task> tasks = new ArrayList<Task>();
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Employee employee;
 
 	public Report() {

@@ -43,7 +43,7 @@ public class Employee implements Cloneable {
 			@JoinColumn(name = "authority_id") })
 	public Set<Authority> authorities = new HashSet<>();
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "employee")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Report> reports = new ArrayList<>();
 
 	public Employee() {

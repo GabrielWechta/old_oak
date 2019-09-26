@@ -23,27 +23,24 @@ public class AdminReportCRUDView extends DefaultReportCRUDView {
 
 	private static final long serialVersionUID = -4744817894242273882L;
 	private static final Logger LOGGER = Logger.getLogger(EmployeeService.class.getName());
-//	@Autowired
-//	ReportService reportService;
 
 	@Autowired
 	public AdminReportCRUDView(final ReportService reportService, EmployeeService employeeService, Employee employee) {
 		super(reportService, employeeService);
-		//Grid<Report> grid = super.getGrid();
-		
-		super.getGrid().setItems(reportService.findByEmployeeUsername(employee.getUsername()));
+		Grid<Report> grid = super.getGrid();
 
-		GridContextMenu<Report> contextMenu = new GridContextMenu<>(super.getGrid());
+		grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
+
+		GridContextMenu<Report> contextMenu = new GridContextMenu<>(grid);
 		contextMenu.addItem("Remove", e -> {
 			e.getItem().ifPresent(a -> {
-				reportService.delete(a);
-				super.getGrid().setItems(reportService.findByEmployeeUsername(employee.getUsername()));
-				//createAreYouSureDialog(reportService, grid, a, employee);
+				createAreYouSureDialog(reportService, grid, a, employee);
 			});
 		});
 	}
 
-	private void createAreYouSureDialog(ReportService reportService, Grid<Report> grid, Report report, Employee employee) {
+	private void createAreYouSureDialog(ReportService reportService, Grid<Report> grid, Report report,
+			Employee employee) {
 		Dialog dialog = new Dialog();
 		HorizontalLayout layout = new HorizontalLayout();
 
@@ -51,10 +48,8 @@ public class AdminReportCRUDView extends DefaultReportCRUDView {
 				"Are you sure you want to delete report from " + report.getDate() + "? It will be permament.");
 		Button yesButton = new Button("Yes");
 		yesButton.addClickListener((__) -> {
-			LOGGER.info(report.getDate().toString());
-			LOGGER.info("++++++++++++++++++++++++++++++++++++++" + Long.toString(report.getId()));
 			reportService.delete(report);
-			grid.setItems(reportService.findAll());
+			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
 			dialog.close();
 		});
 		layout.add(yesButton);

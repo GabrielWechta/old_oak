@@ -19,7 +19,11 @@ public class TaskService {
 	public List<Task> findAll() {
 		return taskRepository.findAll();
 	}
-
+	
+	public List<Task> findByReport(Report report) {
+		return taskRepository.findByReport(report);
+	}
+	
 	public void save(Task task) {
 		if (task == null) {
 			LOGGER.log(Level.SEVERE, "Task is null. And that's bad. Check why do you save null Task.");
@@ -27,4 +31,6 @@ public class TaskService {
 		}
 		taskRepository.save(task);
 	}
+	
+	
 }
