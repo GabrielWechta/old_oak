@@ -48,7 +48,8 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 			report.setDate(datePicker.getValue());
 			report.setEmployee(employee);
 			employee.addReport(report);
-			reportService.save(report);
+//			reportService.save(report);
+			employeeService.save(employee);
 
 			dialog.close();
 			grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));

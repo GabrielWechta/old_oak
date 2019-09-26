@@ -1,7 +1,5 @@
 package com.harman.web_pages;
 
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -16,6 +14,8 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -76,9 +76,20 @@ public class EmployeesCRUDView extends VerticalLayout {
 
 	private void createEmployeeReportsDialog(Employee employee) {
 		Dialog dialog = new Dialog();
+		
+		HorizontalLayout layout = new HorizontalLayout();
+		layout.setJustifyContentMode(JustifyContentMode.BETWEEN);
+		layout.add(new Label("Id: " + employee.getId() + " | Username: " + employee.getUsername()));
+		//header
+		Icon exitIcon = new Icon(VaadinIcon.CLOSE);
+		exitIcon.getStyle().set("cursor", "pointer");
+		exitIcon.setColor("red");
+		exitIcon.addClickListener((__) -> dialog.close());
+		layout.add(exitIcon);
+		
 		AdminReportCRUDView adminReportCRUDView = new AdminReportCRUDView(reportService, employeeService, employee);
 		adminReportCRUDView.setSizeFull();
-		dialog.add(adminReportCRUDView);
+		dialog.add(layout, adminReportCRUDView);
 		dialog.setWidth("1500px");
 		dialog.setHeight("900px");
 		dialog.open();

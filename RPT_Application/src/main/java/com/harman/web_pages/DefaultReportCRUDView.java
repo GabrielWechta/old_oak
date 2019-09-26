@@ -105,6 +105,7 @@ public class DefaultReportCRUDView extends VerticalLayout {
 				employee.addReport(report);
 				reportService.save(report);
 				//grid.getColumnByKey("Download").
+				
 				grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
 				dialog.close();
 
@@ -120,9 +121,9 @@ public class DefaultReportCRUDView extends VerticalLayout {
 		return grid;
 	}
 
-	public void setGrid(Grid<Report> grid) {
-		this.grid = grid;
-	}
+//	public static void setGrid(Grid<Report> grid) {
+//		this.grid = grid;
+//	}
 
 	public Employee getEmployee() {
 		return employee;

@@ -48,6 +48,7 @@ public class ReportService {
 		}
 		LOGGER.log(Level.SEVERE, "WSZEDLEM");
 		reportRepository.delete(report);
+		LOGGER.log(Level.SEVERE, "DZIALAM");
 	}
 
 }
