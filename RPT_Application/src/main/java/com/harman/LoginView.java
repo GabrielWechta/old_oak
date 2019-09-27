@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.harman.web_service.CustomRequestCache;
+import com.harman.web.service.CustomRequestCache;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.login.LoginOverlay;
@@ -43,7 +43,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 				// try to authenticate with given credentials, should always return not null or
 				// throw an {@link AuthenticationException}
 				final Authentication authentication = authenticationManager
-						.authenticate(new UsernamePasswordAuthenticationToken(e.getUsername(), e.getPassword())); //
+						.authenticate(new UsernamePasswordAuthenticationToken(e.getUsername(), e.getPassword()));
 
 				// if authentication was successful we will update the security context and
 				// redirect to the page requested first
@@ -51,7 +51,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 				login.close();
 				UI.getCurrent().navigate(requestCache.resolveRedirectUrl());
 
-			} catch (AuthenticationException ex) { //
+			} catch (AuthenticationException ex) {
 				login.setError(true);
 			}
 		});

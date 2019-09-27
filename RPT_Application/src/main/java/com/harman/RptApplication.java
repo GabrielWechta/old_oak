@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.harman.user_database.EmployeeRepository;
-import com.harman.user_database.EmployeeService;
+import com.harman.database.repositories.EmployeeRepository;
+import com.harman.database.services.EmployeeService;
 
 @SpringBootApplication
 public class RptApplication {
