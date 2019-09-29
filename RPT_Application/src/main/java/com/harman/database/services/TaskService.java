@@ -33,6 +33,13 @@ public class TaskService {
 		}
 		taskRepository.save(task);
 	}
+
+	public Task findById(long id) {
+		if (taskRepository.findById(id).isPresent()) {
+			return taskRepository.findById(id).get();
+		} else
+			return null;
+	}
 	
 	
 }

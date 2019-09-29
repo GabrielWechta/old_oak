@@ -74,16 +74,16 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 		Button addTaskButton = new Button("Add Task");
 		addTaskButton.setHeight("75px");
 		addTaskButton.setWidth("250px");
-
+		TaskCRUDView taskCRUDView = new TaskCRUDView(taskService, e.getItem());
 		addTaskButton.addClickListener(event -> {
-			createTask(e.getItem(), employee);
+			createTask(e.getItem(), employee, taskCRUDView);
 		});
 
 		wwbH3 = new H3();
 		wwbH3.setText("WWB: " + e.getItem().getWwb());
 		buttomLayout.add(addTaskButton, wwbH3);
 
-		TaskCRUDView taskCRUDView = new TaskCRUDView(taskService, e.getItem());
+		
 		dialog.add(layout, taskCRUDView, buttomLayout);// , addTaskButton, wwbTextArea);
 		taskCRUDView.setHeight("500px");
 		dialog.setHeight("600px");
@@ -91,11 +91,11 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 		dialog.open();
 	}
 
-	private void createTask(Report report, Employee employee) {
+	private void createTask(Report report, Employee employee, TaskCRUDView taskCRUDView) {
 		Dialog dialog = new Dialog();
 		FormLayout formLayout = new FormLayout();
 		Binder<Task> binder = new Binder<>(Task.class);
-		Grid<Task> grid = new Grid<>(Task.class);
+		//Grid<Task> grid = new Grid<>(Task.class);
 
 		dialog.setHeightFull();
 		dialog.setWidth("750px");
@@ -133,7 +133,7 @@ public class UserReportCRUDView extends DefaultReportCRUDView {
 
 				taskService.save(task);
 				
-				grid.setItems(taskService.findByReport(report));
+				taskCRUDView.getGrid().setItems(taskService.findByReport(report));
 				super.getGrid().setItems(reportService.findByEmployeeUsername(employee.getUsername()));
 				getWwbH3().setText("WWB: " + report.getWwb());
 				dialog.close();

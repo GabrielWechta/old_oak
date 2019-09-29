@@ -32,10 +32,10 @@ public class AdminReportCRUDView extends DefaultReportCRUDView {
 	@Autowired
 	public AdminReportCRUDView(final ReportService reportService, EmployeeService employeeService, Employee employee) {
 		super(reportService, employeeService);
-//		Grid<Report> grid = super.getGrid();
+		Grid<Report> grid = super.getGrid();
 
-		super.getGrid().setItems(reportService.findByEmployeeUsername(employee.getUsername()));
-		super.getGrid().addItemDoubleClickListener(e -> taskDialog(super.getGrid(), e, super.getEmployee()));
+		grid.setItems(reportService.findByEmployeeUsername(employee.getUsername()));
+		grid.addItemDoubleClickListener(e -> taskDialog(grid, e.getItem(), super.getEmployee()));
 
 		GridContextMenu<Report> contextMenu = new GridContextMenu<>(super.getGrid());
 		contextMenu.addItem("Remove", e -> {
@@ -45,28 +45,24 @@ public class AdminReportCRUDView extends DefaultReportCRUDView {
 		});
 	}
 
-	private void taskDialog(Grid<Report> grid, ItemDoubleClickEvent<Report> e, Employee employee) {
+	private void taskDialog(Grid<Report> grid, Report report, Employee employee) {
 		Dialog dialog = new Dialog();
 		HorizontalLayout layout = new HorizontalLayout();
 		FormLayout buttomLayout = new FormLayout();
 
 		layout.setJustifyContentMode(JustifyContentMode.BETWEEN);
-		layout.add(new Label("Month: " + e.getItem().getDate()));
+		layout.add(new Label("Month: " + report.getDate()));
 		Icon exitIcon = new Icon(VaadinIcon.CLOSE);
 		exitIcon.getStyle().set("cursor", "pointer");
 		exitIcon.setColor("red");
 		exitIcon.addClickListener((__) -> dialog.close());
 		layout.add(exitIcon);
 
-		Button addTaskButton = new Button("Add Task");
-		addTaskButton.setHeight("75px");
-		addTaskButton.setWidth("250px");
-
 		wwbH3 = new H3();
-		wwbH3.setText("WWB: " + e.getItem().getWwb());
-		buttomLayout.add(addTaskButton, wwbH3);
+		wwbH3.setText("WWB: " + report.getWwb());
+		buttomLayout.add(wwbH3);
 
-		TaskCRUDView taskCRUDView = new TaskCRUDView(taskService, e.getItem());
+		TaskCRUDView taskCRUDView = new TaskCRUDView(taskService, report);
 		dialog.add(layout, taskCRUDView, buttomLayout);// , addTaskButton, wwbTextArea);
 		taskCRUDView.setHeight("500px");
 		dialog.setHeight("600px");

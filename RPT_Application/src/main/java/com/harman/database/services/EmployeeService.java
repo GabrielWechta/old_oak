@@ -1,5 +1,6 @@
 package com.harman.database.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,6 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.harman.database.entities.Employee;
+import com.harman.database.entities.Report;
+import com.harman.database.entities.Task;
+import com.harman.database.entities.WwbType;
 import com.harman.database.repositories.EmployeeRepository;
 
 @Service
@@ -65,7 +69,16 @@ public class EmployeeService {
 	public void ensureTestData() {
 		Employee employee1 = new Employee("PLIN029", "Gabi", passwordEncoder.encode("1gabi2"));
 		employee1.setAuthority("Admin");
+		Report report = new Report();
+		//report.setDate(new LocalDate(1970, 1, 1));
+		Task task = new Task("1", "1", "1", "1", WwbType.BUG);
+		report.addTask(task);
+		task.setReport(report);
+		employee1.addReport(report);
+		report.setEmployee(employee1);
 		save(employee1);
+		
+		LOGGER.info("REPORT1 = " + report.toString());
 		Employee employee2 = new Employee("PW023", "Jurek", passwordEncoder.encode("ogórek"));
 		employee2.setAuthority("User");
 		save(employee2);
