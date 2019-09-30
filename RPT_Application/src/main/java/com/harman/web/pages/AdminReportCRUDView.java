@@ -24,18 +24,15 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 public class AdminReportCRUDView extends DefaultReportCRUDView {
 
 	private static final long serialVersionUID = -4744817894242273882L;
-	@Autowired
-	TaskService taskService;
 	
 	private H3 wwbH3;
 	
-	@Autowired
-	public AdminReportCRUDView(final ReportService reportService, EmployeeService employeeService, Employee employee) {
+	public AdminReportCRUDView(final ReportService reportService, EmployeeService employeeService, TaskService taskService, Employee employee) {
 		super(reportService, employeeService);
 //		Grid<Report> grid = super.getGrid();
 
 		super.getGrid().setItems(reportService.findByEmployeeUsername(employee.getUsername()));
-		super.getGrid().addItemDoubleClickListener(e -> taskDialog(super.getGrid(), e, super.getEmployee()));
+		super.getGrid().addItemDoubleClickListener(e -> taskDialog(super.getGrid(), e, super.getEmployee(), taskService));
 
 		GridContextMenu<Report> contextMenu = new GridContextMenu<>(super.getGrid());
 		contextMenu.addItem("Remove", e -> {
@@ -45,7 +42,7 @@ public class AdminReportCRUDView extends DefaultReportCRUDView {
 		});
 	}
 
-	private void taskDialog(Grid<Report> grid, ItemDoubleClickEvent<Report> e, Employee employee) {
+	private void taskDialog(Grid<Report> grid, ItemDoubleClickEvent<Report> e, Employee employee, TaskService taskService) {
 		Dialog dialog = new Dialog();
 		HorizontalLayout layout = new HorizontalLayout();
 		FormLayout buttomLayout = new FormLayout();

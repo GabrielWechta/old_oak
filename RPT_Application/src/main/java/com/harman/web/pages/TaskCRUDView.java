@@ -16,7 +16,7 @@ import com.vaadin.flow.component.textfield.TextArea;
 public class TaskCRUDView extends VerticalLayout {
 	private static final long serialVersionUID = -7953493189284280980L;
 	
-	@Autowired
+	
 	public TaskCRUDView(/*final */TaskService taskService, Report report) {
 
 		Grid<Task> grid = new Grid<>(Task.class);
