@@ -24,10 +24,6 @@ public class TaskCRUDView extends VerticalLayout {
 	
 	private static final Logger LOGGER = Logger.getLogger(EmployeeService.class.getName());
 
-//	@Autowired
-//	TaskService taskService;
-	
-	@Autowired
 	public TaskCRUDView( final TaskService taskService, Report report) {
 
 		grid = new Grid<>(Task.class);

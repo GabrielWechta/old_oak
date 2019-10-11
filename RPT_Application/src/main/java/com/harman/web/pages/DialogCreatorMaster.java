@@ -90,7 +90,7 @@ public class DialogCreatorMaster {
 		exitIcon.addClickListener((__) -> dialog.close());
 		horizontalLayout.add(exitIcon);
 
-		AdminReportCRUDView adminReportCRUDView = new AdminReportCRUDView(reportService, employeeService, employee);
+		AdminReportCRUDView adminReportCRUDView = new AdminReportCRUDView(reportService, employeeService, employee, taskService);
 		adminReportCRUDView.setSizeFull();
 		dialog.add(horizontalLayout, adminReportCRUDView);
 		dialog.setWidth("1500px");
